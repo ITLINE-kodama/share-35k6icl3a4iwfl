@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>株式会社サンモニター｜金属探知機・X線検査機のレンタル【デザイン案A】</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   デザイン案A ― 参考サイト（JR東日本 夏季インターンシップ）の
+   設計作法を踏襲。9.5px基準のモジュラースケール／非対称の左寄せ本文／
+   英字＋和文の2段見出し（スクロールで塗り上げ）／正方形タイルのモザイクMV。
+   カラーはサンモニター青 #0068B7（現行サイト実測）。
+   ============================================================ */
+:root{
+  --u: 9.5px;                 /* 基準単位（参考サイト実測値） */
+  --blue:#0068B7;             /* サンモニター青 */
+  --blue-d:#00518F;
+  --blue-l:#3E90D2;
+  --ink:#333333;
+  --sub:#6B7683;
+  --bg:#F2F5F8;               /* 青を帯びたオフホワイト */
+  --line:#E3E8EE;
+  --white:#fff;
+  --sumi:#231815;             /* ロゴのスミ色 */
+  --jp:"Noto Sans JP",-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --en:"Plus Jakarta Sans","Noto Sans JP",sans-serif;
+}
+@media (min-width:1024px){ :root{ --u: 0.66vw; } }
+@media (min-width:1800px){ :root{ --u: 11.9px; } }
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+section[id]{scroll-margin-top:calc(var(--u)*9);}
+body{font-family:var(--jp);color:var(--ink);background:var(--bg);line-height:1.8;
+  font-size:15px;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img,video{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+
+/* ---------- 共通レイアウト ---------- */
+.wrap{padding:0 calc(var(--u)*3);}
+.sec{padding-bottom:calc(var(--u)*20);}
+/* 参考サイト作法：本文は左に寄せ、右に大きく余白を残す非対称 */
+.col{width:100%;max-width:calc(var(--u)*78);padding-left:calc(var(--u)*10);}
+@media(max-width:900px){ .col{padding-left:0;max-width:none;} .wrap{padding:0 22px;} }
+
+/* ---------- 2段見出し（英字＋和文） ---------- */
+/* 英字はグラデーションのstop位置をスクロールで動かし、下から青に塗り上げる */
+.hg{margin-bottom:calc(var(--u)*4);}
+.hg h2{
+  font-family:var(--en);font-weight:700;font-size:calc(var(--u)*6);line-height:1;
+  letter-spacing:-.01em;
+  background-image:linear-gradient(var(--line) 0%, var(--blue) 0%);
+  background-clip:text;-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  margin-bottom:calc(var(--u)*0.4);
+  transition:background-image .1s linear;
+}
+.hg p{font-size:calc(var(--u)*1.95);font-weight:700;color:var(--ink);padding-left:.15em;}
+
+/* ---------- グローバルナビ（画面上部に固定） ---------- */
+.hd{position:fixed;left:0;right:0;top:0;z-index:80;background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);
+  display:flex;align-items:center;gap:calc(var(--u)*3);
+  padding:calc(var(--u)*1.2) calc(var(--u)*2.4);
+  border-bottom:1px solid rgba(0,104,183,.10);
+  transition:box-shadow .25s,background .25s;}
+.hd.stuck{background:rgba(255,255,255,.98);box-shadow:0 2px 18px rgba(20,40,70,.08);}
+.hd .mark{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+.hd .mark img{height:calc(var(--u)*3.4);width:auto;}
+.hd .mark b{font-size:calc(var(--u)*1.35);letter-spacing:.02em;white-space:nowrap;}
+.hd nav{margin-left:auto;display:flex;align-items:center;gap:calc(var(--u)*2.6);
+  font-size:calc(var(--u)*1.3);font-weight:500;}
+.hd nav a{color:var(--ink);transition:color .2s;}
+.hd nav a:hover{color:var(--blue);}
+.hd .tel{font-family:var(--en);font-weight:700;font-size:calc(var(--u)*1.7);color:var(--blue);letter-spacing:.02em;}
+.hd .cta{background:var(--blue);color:#fff;border-radius:999px;font-weight:700;
+  padding:calc(var(--u)*1.1) calc(var(--u)*2.6);font-size:calc(var(--u)*1.3);
+  white-space:nowrap;transition:background .2s;}
+.hd .cta:hover{background:var(--blue-d);}
+@media(max-width:900px){
+  .hd{gap:10px;padding:9px 13px;}
+  .hd nav,.hd .tel{display:none;}
+  .hd .mark img{height:26px;} .hd .mark b{font-size:12px;}
+  .hd .cta{font-size:12px;padding:9px 16px;margin-left:auto;}
+}
+
+/* ============================================================
+   MV：正方形タイルのモザイク（参考サイト .Gallery の作法）
+   固定配置の縦列グリッドを、列ごとに速度差でスクロールさせる
+   ============================================================ */
+.mv{position:relative;height:100vh;min-height:560px;overflow:hidden;}
+/* 参考サイトの実測：スクロールしていなくても列が約94px/秒で流れ続ける。
+   同じ「常時流れる無限マーキー」をJSのrAFで再現し、スクロール視差を上乗せする */
+.gal{position:absolute;inset:0;display:flex;gap:var(--u);
+  padding:var(--u);justify-content:center;}
+.gal .group{flex:1 1 0;min-width:0;overflow:hidden;}
+.gal .run{display:grid;gap:var(--u);will-change:transform;transform:translate3d(0,0,0);}
+.gal .tile{position:relative;aspect-ratio:1/1;border-radius:calc(var(--u)*1.2);
+  overflow:hidden;background:#E8EEF4;box-shadow:0 2px 10px rgba(20,50,90,.05);}
+.gal .tile img,.gal .tile video{width:100%;height:100%;object-fit:cover;}
+/* 静止画タイルはゆっくり寄り引きさせ、壁全体に動きを出す */
+.gal .tile img{animation:kb 16s ease-in-out infinite alternate;transform-origin:52% 55%;}
+.gal .group:nth-child(2) .tile img{animation-duration:19s;animation-delay:-4s;}
+.gal .group:nth-child(3) .tile img{animation-duration:14s;animation-delay:-8s;}
+.gal .group:nth-child(4) .tile img{animation-duration:21s;animation-delay:-2s;}
+.gal .group:nth-child(5) .tile img{animation-duration:17s;animation-delay:-11s;}
+@keyframes kb{ from{transform:scale(1.015);} to{transform:scale(1.10);} }
+/* MV読み込み時に列がせり上がって出る */
+.gal .group{opacity:0;transform:translateY(3%);animation:galIn .9s cubic-bezier(.22,.7,.3,1) forwards;}
+.gal .group:nth-child(1){animation-delay:.05s}
+.gal .group:nth-child(2){animation-delay:.14s}
+.gal .group:nth-child(3){animation-delay:.23s}
+.gal .group:nth-child(4){animation-delay:.32s}
+.gal .group:nth-child(5){animation-delay:.41s}
+@keyframes galIn{ to{opacity:1;transform:none;} }
+@media (prefers-reduced-motion:reduce){
+  .gal .tile img{animation:none;}
+  .gal .group{opacity:1;transform:none;animation:none;}
+}
+/* 5列目以降は狭い画面で隠す */
+@media(max-width:1100px){ .gal .group:nth-child(n+5){display:none;} }
+@media(max-width:700px){ .gal .group:nth-child(n+4){display:none;} }
+@media (prefers-reduced-motion:reduce){ .gal .run{transform:none!important;} }
+
+/* MVの文字：左下に重ねる */
+/* 画像は全画面のまま。左端から始まり右へ自然に消える光を全高にかけるため、
+   上下左に境目が生まれない。右側は画像が100%の濃さで見える。
+   濃度は「背景が真っ黒のタイルに重なっても本文4.5:1」を満たす値に設定している。 */
+.mv .veil{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,
+    rgba(247,250,252,.97) 0%,
+    rgba(247,250,252,.96) 26%,
+    rgba(247,250,252,.90) 40%,
+    rgba(247,250,252,.70) 50%,
+    rgba(247,250,252,.36) 60%,
+    rgba(247,250,252,.10) 69%,
+    rgba(247,250,252,0) 76%);}
+@media(max-width:900px){
+  .mv .veil{background:linear-gradient(180deg,
+    rgba(247,250,252,.20) 0%,
+    rgba(247,250,252,.62) 16%,
+    rgba(247,250,252,.94) 30%,
+    rgba(247,250,252,.96) 74%,
+    rgba(247,250,252,.70) 88%,
+    rgba(247,250,252,.30) 100%);}
+}
+.mv .inner{position:absolute;inset:0;display:flex;align-items:center;padding-top:calc(var(--u)*6);}
+/* 文字は箱に載せない。背景・枠・角丸・影のいずれも持たせず、
+   読みやすさは下の .veil（画面全高にわたる境目のない光）で確保する。 */
+.mv .box{position:relative;margin-left:calc(var(--u)*10);max-width:calc(var(--u)*68);
+  padding:0;border:none;border-radius:0;box-shadow:none;background:none;}
+@media(max-width:900px){
+  .mv .inner{align-items:center;padding:0 20px;}
+  .mv .box{margin-left:0;max-width:none;}
+}
+
+/* 参考サイトの実測：スクロールしていなくても列が約94px/秒で流れ続ける。
+   同じ「常時流れる無限マーキー」をJSのrAFで再現し、スクロール視差を上乗せする */
+.gal{position:absolute;inset:0;display:flex;gap:var(--u);
+  padding:var(--u);justify-content:center;}
+.gal .group{flex:1 1 0;min-width:0;overflow:hidden;}
+.gal .run{display:grid;gap:var(--u);will-change:transform;transform:translate3d(0,0,0);}
+.gal .tile{position:relative;aspect-ratio:1/1;border-radius:calc(var(--u)*1.2);
+  overflow:hidden;background:#E8EEF4;box-shadow:0 2px 10px rgba(20,50,90,.05);}
+.gal .tile img,.gal .tile video{width:100%;height:100%;object-fit:cover;}
+/* 静止画タイルはゆっくり寄り引きさせ、壁全体に動きを出す */
+.gal .tile img{animation:kb 16s ease-in-out infinite alternate;transform-origin:52% 55%;}
+.gal .group:nth-child(2) .tile img{animation-duration:19s;animation-delay:-4s;}
+.gal .group:nth-child(3) .tile img{animation-duration:14s;animation-delay:-8s;}
+.gal .group:nth-child(4) .tile img{animation-duration:21s;animation-delay:-2s;}
+.gal .group:nth-child(5) .tile img{animation-duration:17s;animation-delay:-11s;}
+@keyframes kb{ from{transform:scale(1.015);} to{transform:scale(1.10);} }
+/* MV読み込み時に列がせり上がって出る */
+.gal .group{opacity:0;transform:translateY(3%);animation:galIn .9s cubic-bezier(.22,.7,.3,1) forwards;}
+.gal .group:nth-child(1){animation-delay:.05s}
+.gal .group:nth-child(2){animation-delay:.14s}
+.gal .group:nth-child(3){animation-delay:.23s}
+.gal .group:nth-child(4){animation-delay:.32s}
+.gal .group:nth-child(5){animation-delay:.41s}
+@keyframes galIn{ to{opacity:1;transform:none;} }
+@media (prefers-reduced-motion:reduce){
+  .gal .tile img{animation:none;}
+  .gal .group{opacity:1;transform:none;animation:none;}
+}
+/* 5列目以降は狭い画面で隠す */
+@media(max-width:1100px){ .gal .group:nth-child(n+5){display:none;} }
+@media(max-width:700px){ .gal .group:nth-child(n+4){display:none;} }
+@media (prefers-reduced-motion:reduce){ .gal .run{transform:none!important;} }
+
+/* MVの文字：左下に重ねる */
+.mv .inner{position:absolute;inset:0;display:flex;align-items:center;padding-top:calc(var(--u)*6);}
+.mv .box>*{opacity:0;transform:translateY(calc(var(--u)*1.6));
+  animation:mvIn .95s cubic-bezier(.22,.7,.3,1) forwards;}
+.mv .box>*:nth-child(1){animation-delay:.45s}
+.mv .box>*:nth-child(2){animation-delay:.58s}
+.mv .box>*:nth-child(3){animation-delay:.71s}
+.mv .box>*:nth-child(4){animation-delay:.84s}
+.mv .box>*:nth-child(5){animation-delay:.95s}
+@keyframes mvIn{ to{opacity:1;transform:none;} }
+@media (prefers-reduced-motion:reduce){ .mv .box>*{opacity:1;transform:none;animation:none;} }
+.mv .en{font-family:var(--en);font-weight:700;font-size:calc(var(--u)*1.5);
+  color:var(--blue);letter-spacing:.16em;margin-bottom:calc(var(--u)*1.6);}
+.mv h1{font-size:calc(var(--u)*4.35);font-weight:800;line-height:1.5;letter-spacing:.01em;
+  margin-bottom:calc(var(--u)*3);}
+.mv h1 .mk{color:var(--blue);}
+.mv .lead{font-size:calc(var(--u)*1.55);line-height:2.15;color:#3C4854;max-width:38em;}
+@media(max-width:900px){
+  .mv h1{font-size:21px;line-height:1.62;} .mv .en{font-size:11px;letter-spacing:.12em;}
+  .mv .lead{font-size:13px;line-height:1.95;}
+}
+.mv .pills{display:flex;flex-wrap:wrap;gap:calc(var(--u)*1);margin-top:calc(var(--u)*2.4);}
+.mv .pills span{background:#EEF4FA;border:1px solid #D5E3F0;border-radius:999px;
+  padding:calc(var(--u)*.9) calc(var(--u)*2);font-size:calc(var(--u)*1.25);font-weight:700;
+  color:#2B3946;display:flex;align-items:center;gap:8px;}
+.mv .pills span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue);}
+@media(max-width:900px){ .mv .pills span{font-size:11.5px;padding:7px 13px;} }
+
+/* MVのCTA3種（ワイヤー PAGE 01 と同じ並び：かんたん見積依頼／製品を探す／課題から探す） */
+.mv .acts{display:flex;flex-wrap:wrap;gap:calc(var(--u)*1.3);margin-top:calc(var(--u)*3.2);}
+.mv .acts a{display:inline-flex;align-items:center;gap:calc(var(--u)*1);
+  border-radius:999px;font-weight:800;font-size:calc(var(--u)*1.45);
+  padding:calc(var(--u)*1.6) calc(var(--u)*3.2);transition:.2s;border:2px solid transparent;}
+.mv .acts .a1{background:var(--blue);color:#fff;box-shadow:0 calc(var(--u)*.8) calc(var(--u)*2) rgba(0,104,183,.28);}
+.mv .acts .a1:hover{background:var(--blue-d);transform:translateY(-2px);}
+.mv .acts .a2{background:#fff;color:var(--blue-d);border-color:var(--blue);}
+.mv .acts .a2:hover{background:#EAF3FB;transform:translateY(-2px);}
+.mv .acts svg{width:calc(var(--u)*1.7);height:calc(var(--u)*1.7);flex:0 0 auto;}
+.mv .acts a:focus-visible{outline:3px solid #0B3D6B;outline-offset:3px;}
+@media(max-width:900px){
+  .mv .acts{gap:9px;margin-top:18px;}
+  .mv .acts a{font-size:13.5px;padding:12px 16px;flex:1 1 100%;justify-content:center;}
+  .mv .acts .a2{flex:1 1 calc(50% - 5px);}
+}
+.scroll{position:absolute;right:calc(var(--u)*3);bottom:calc(var(--u)*5);
+  writing-mode:vertical-rl;font-family:var(--en);font-size:calc(var(--u)*1.15);
+  letter-spacing:.3em;color:#2B3946;font-weight:700;display:flex;align-items:center;gap:12px;
+  background:rgba(255,255,255,.82);border-radius:999px;padding:calc(var(--u)*1.6) calc(var(--u)*.7);}
+.scroll::after{content:"";width:1px;height:calc(var(--u)*7);background:linear-gradient(var(--blue),transparent);}
+@media(max-width:900px){ .scroll{display:none;} }
+
+/* ---------- 用途から探す ---------- */
+.use{padding-top:calc(var(--u)*14);}
+.use .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*2);
+  margin-top:calc(var(--u)*5);max-width:calc(var(--u)*130);margin-left:auto;margin-right:auto;}
+.uc{background:var(--white);border-radius:calc(var(--u)*1.6);overflow:hidden;
+  border:1px solid var(--line);transition:transform .28s ease,box-shadow .28s ease;display:flex;flex-direction:column;}
+.uc:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,70,140,.10);}
+.uc .ph{aspect-ratio:16/11;overflow:hidden;background:#EAF0F6;}
+.uc .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+.uc:hover .ph img{transform:scale(1.05);}
+.uc .tx{padding:calc(var(--u)*2.6) calc(var(--u)*2.6) calc(var(--u)*3);flex:1;display:flex;flex-direction:column;}
+.uc .no{font-family:var(--en);font-weight:700;font-size:calc(var(--u)*1.2);color:var(--blue);
+  letter-spacing:.14em;margin-bottom:calc(var(--u)*1);}
+.uc h3{font-size:calc(var(--u)*2.2);font-weight:800;line-height:1.55;margin-bottom:calc(var(--u)*1.2);}
+.uc p{font-size:calc(var(--u)*1.3);color:var(--sub);line-height:2;flex:1;}
+.uc .go{margin-top:calc(var(--u)*2);font-size:calc(var(--u)*1.25);font-weight:700;color:var(--blue);
+  display:flex;align-items:center;gap:8px;}
+.uc .go::after{content:"";width:calc(var(--u)*2.4);height:1px;background:var(--blue);transition:width .25s;}
+.uc:hover .go::after{width:calc(var(--u)*4);}
+@media(max-width:900px){
+  .use .grid{grid-template-columns:1fr;gap:16px;}
+  .uc h3{font-size:19px;} .uc p{font-size:13.5px;} .uc .no{font-size:11px;}
+}
+
+/* ---------- 製品カテゴリ ---------- */
+.prod{background:var(--white);padding-top:calc(var(--u)*14);}
+.prod .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:calc(var(--u)*2);
+  margin-top:calc(var(--u)*5);max-width:calc(var(--u)*130);margin-left:auto;margin-right:auto;}
+.pc{border:1px solid var(--line);border-radius:calc(var(--u)*1.4);overflow:hidden;
+  background:var(--bg);transition:border-color .25s,transform .25s;}
+.pc:hover{border-color:var(--blue);transform:translateY(-4px);}
+.pc .ph{aspect-ratio:4/5;overflow:hidden;background:#EAF0F6;}
+.pc .ph img{width:100%;height:100%;object-fit:cover;}
+.pc .tx{padding:calc(var(--u)*2) calc(var(--u)*2) calc(var(--u)*2.4);background:var(--white);}
+.pc .en{font-family:var(--en);font-size:calc(var(--u)*1.1);font-weight:700;color:var(--blue);
+  letter-spacing:.12em;}
+.pc h3{font-size:calc(var(--u)*1.9);font-weight:800;margin:calc(var(--u)*.6) 0 calc(var(--u)*.8);}
+.pc p{font-size:calc(var(--u)*1.2);color:var(--sub);line-height:1.9;}
+.pc .tag{display:inline-block;margin-top:calc(var(--u)*1.2);font-size:calc(var(--u)*1.05);
+  font-weight:700;color:var(--blue);background:#EAF3FB;border-radius:999px;padding:4px 12px;}
+@media(max-width:900px){
+  .prod .grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .pc h3{font-size:15px;} .pc p{font-size:11.5px;} .pc .en{font-size:10px;}
+  .pc .tag{font-size:10px;}
+}
+
+/* ---------- 選ばれる理由（左右交互・大きな余白） ---------- */
+.why{padding-top:calc(var(--u)*14);}
+.why .row{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*7);align-items:center;
+  max-width:calc(var(--u)*130);margin:0 auto calc(var(--u)*9);}
+.why .row:nth-child(even) .fig{order:2;}
+.why .fig{border-radius:calc(var(--u)*2);overflow:hidden;aspect-ratio:4/3;background:#EAF0F6;}
+.why .fig img,.why .fig video{width:100%;height:100%;object-fit:cover;}
+.why .no{font-family:var(--en);font-weight:700;font-size:calc(var(--u)*4.6);color:var(--blue);
+  line-height:1;opacity:.22;margin-bottom:calc(var(--u)*-1.2);}
+.why h3{font-size:calc(var(--u)*3.2);font-weight:800;line-height:1.5;margin-bottom:calc(var(--u)*1.8);}
+.why p{font-size:calc(var(--u)*1.4);color:#4A5561;line-height:2.15;}
+.why .note{margin-top:calc(var(--u)*2);font-size:calc(var(--u)*1.15);color:var(--sub);
+  border-left:2px solid var(--blue);padding-left:calc(var(--u)*1.6);line-height:1.9;}
+@media(max-width:900px){
+  .why .row{grid-template-columns:1fr;gap:18px;margin-bottom:44px;}
+  .why .row:nth-child(even) .fig{order:0;}
+  .why h3{font-size:21px;} .why p{font-size:14px;} .why .no{font-size:34px;}
+  .why .note{font-size:12px;}
+}
+
+/* ---------- レンタルの流れ ---------- */
+.flow{background:var(--white);padding-top:calc(var(--u)*14);}
+.flow .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:calc(var(--u)*1.6);
+  margin-top:calc(var(--u)*5);max-width:calc(var(--u)*130);margin-left:auto;margin-right:auto;}
+.st{background:var(--bg);border-radius:calc(var(--u)*1.4);padding:calc(var(--u)*2.6) calc(var(--u)*2);
+  position:relative;border-top:3px solid var(--blue);}
+.st .n{font-family:var(--en);font-weight:700;font-size:calc(var(--u)*1.15);color:var(--blue);
+  letter-spacing:.14em;margin-bottom:calc(var(--u)*1);}
+.st h4{font-size:calc(var(--u)*1.75);font-weight:800;margin-bottom:calc(var(--u)*.9);line-height:1.5;}
+.st p{font-size:calc(var(--u)*1.15);color:var(--sub);line-height:1.95;}
+.st::after{content:"";position:absolute;right:calc(var(--u)*-1.3);top:50%;width:calc(var(--u)*.9);height:calc(var(--u)*.9);
+  border-top:2px solid var(--blue-l);border-right:2px solid var(--blue-l);transform:translateY(-50%) rotate(45deg);}
+.st:last-child::after{display:none;}
+@media(max-width:900px){
+  .flow .steps{grid-template-columns:1fr;gap:10px;}
+  .st::after{right:auto;left:50%;top:auto;bottom:calc(var(--u)*-1.1);transform:translateX(-50%) rotate(135deg);}
+  .st h4{font-size:15.5px;} .st p{font-size:12.5px;}
+}
+
+/* ---------- 検査事例 ---------- */
+.case{padding-top:calc(var(--u)*14);}
+.case .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*2);
+  margin-top:calc(var(--u)*5);max-width:calc(var(--u)*130);margin-left:auto;margin-right:auto;}
+.cc{background:var(--white);border:1px solid var(--line);border-radius:calc(var(--u)*1.4);
+  padding:calc(var(--u)*3);transition:box-shadow .25s,transform .25s;}
+.cc:hover{box-shadow:0 14px 34px rgba(0,70,140,.09);transform:translateY(-4px);}
+.cc .cat{display:inline-block;font-size:calc(var(--u)*1.05);font-weight:700;color:#fff;
+  background:var(--blue);border-radius:999px;padding:4px 13px;margin-bottom:calc(var(--u)*1.6);}
+.cc h4{font-size:calc(var(--u)*1.8);font-weight:800;line-height:1.6;margin-bottom:calc(var(--u)*1.2);}
+.cc dl{display:grid;grid-template-columns:auto 1fr;gap:calc(var(--u)*.7) calc(var(--u)*1.4);
+  font-size:calc(var(--u)*1.2);line-height:1.85;}
+.cc dt{color:var(--blue);font-weight:700;white-space:nowrap;}
+.cc dd{color:#4A5561;}
+@media(max-width:900px){
+  .case .grid{grid-template-columns:1fr;gap:14px;}
+  .cc{padding:20px;} .cc h4{font-size:16px;} .cc dl{font-size:12.5px;}
+}
+
+/* ---------- CTA ---------- */
+.cta-sec{background:linear-gradient(115deg,var(--blue-d) 0%,var(--blue) 62%,var(--blue-l) 100%);
+  color:#fff;padding:calc(var(--u)*13) 0;margin-top:calc(var(--u)*6);}
+.cta-sec .in{max-width:calc(var(--u)*130);margin:0 auto;padding:0 calc(var(--u)*3);}
+.cta-sec .en{font-family:var(--en);font-weight:700;letter-spacing:.2em;font-size:calc(var(--u)*1.35);
+  color:#BEDAF2;margin-bottom:calc(var(--u)*1.6);}
+.cta-sec h2{font-size:calc(var(--u)*3.6);font-weight:800;line-height:1.5;margin-bottom:calc(var(--u)*1.8);}
+.cta-sec p{font-size:calc(var(--u)*1.4);line-height:2.1;color:#E3EFFA;max-width:42em;}
+.cta-sec .btns{display:flex;flex-wrap:wrap;gap:calc(var(--u)*1.6);margin-top:calc(var(--u)*4);}
+.cta-sec .b1,.cta-sec .b2{border-radius:999px;font-weight:800;display:flex;align-items:center;gap:10px;
+  padding:calc(var(--u)*1.7) calc(var(--u)*4);font-size:calc(var(--u)*1.5);transition:.2s;}
+.cta-sec .b1{background:#fff;color:var(--blue-d);}
+.cta-sec .b1:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.18);}
+.cta-sec .b2{border:1.5px solid rgba(255,255,255,.75);color:#fff;}
+.cta-sec .b2:hover{background:rgba(255,255,255,.14);}
+.cta-sec .tel{margin-top:calc(var(--u)*3.4);display:flex;align-items:baseline;gap:calc(var(--u)*1.6);flex-wrap:wrap;}
+.cta-sec .tel b{font-family:var(--en);font-size:calc(var(--u)*4);font-weight:700;letter-spacing:.01em;}
+.cta-sec .tel span{font-size:calc(var(--u)*1.2);color:#C9E0F5;}
+@media(max-width:900px){
+  .cta-sec h2{font-size:22px;} .cta-sec p{font-size:14px;} .cta-sec .en{font-size:11px;}
+  .cta-sec .b1,.cta-sec .b2{font-size:14px;padding:14px 26px;width:100%;justify-content:center;}
+  .cta-sec .tel b{font-size:26px;}
+}
+
+/* ---------- フッター ---------- */
+footer{background:#fff;padding:calc(var(--u)*7) 0 calc(var(--u)*8);border-top:1px solid var(--line);}
+footer .in{max-width:calc(var(--u)*130);margin:0 auto;padding:0 calc(var(--u)*3);
+  display:flex;justify-content:space-between;gap:calc(var(--u)*4);flex-wrap:wrap;}
+footer .mark img{height:calc(var(--u)*4.6);margin-bottom:calc(var(--u)*1.6);}
+footer .addr{font-size:calc(var(--u)*1.2);color:var(--sub);line-height:2;}
+footer nav{display:flex;gap:calc(var(--u)*5);font-size:calc(var(--u)*1.2);}
+footer nav b{display:block;font-size:calc(var(--u)*1.25);margin-bottom:calc(var(--u)*1.2);color:var(--ink);}
+footer nav a{display:block;color:var(--sub);padding:calc(var(--u)*.45) 0;}
+footer nav a:hover{color:var(--blue);}
+footer .cp{max-width:calc(var(--u)*130);margin:calc(var(--u)*5) auto 0;padding:calc(var(--u)*2.4) calc(var(--u)*3) 0;
+  border-top:1px solid var(--line);font-size:calc(var(--u)*1.1);color:#9AA5B1;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+@media(max-width:900px){
+  footer{padding:34px 0 40px;} footer .in{flex-direction:column;gap:24px;}
+  footer nav{gap:28px;flex-wrap:wrap;} footer .addr,footer nav{font-size:12.5px;}
+  footer .cp{font-size:11px;}
+}
+
+/* ---------- スクロール表示アニメーション ---------- */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .85s cubic-bezier(.2,.7,.3,1),transform .85s cubic-bezier(.2,.7,.3,1);}
+.rv.on{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){ .rv{opacity:1;transform:none;transition:none;} html{scroll-behavior:auto;} }
+
+/* 注記（デザイン案であることの明示） */
+.memo{max-width:calc(var(--u)*130);margin:0 auto;padding:calc(var(--u)*3) calc(var(--u)*3) 0;}
+.memo div{background:#FFF8EF;border:1px solid #F0CFA8;border-radius:calc(var(--u)*1.2);
+  padding:calc(var(--u)*2) calc(var(--u)*2.6);font-size:calc(var(--u)*1.15);color:#7A5A30;line-height:1.95;}
+@media(max-width:900px){ .memo div{font-size:11.5px;padding:14px 16px;} }
+</style>
+</head>
+<body>
+
+<!-- ============ グローバルナビ（上部固定） ============ -->
+<header class="hd">
+  <a class="mark" href="#top">
+    <img src="images/logo_sunmonitor.svg" alt="株式会社サンモニター">
+  </a>
+  <nav>
+    <a href="#purpose">用途から探す</a>
+    <a href="#products">取扱製品</a>
+    <a href="#reason">選ばれる理由</a>
+    <a href="#flow">レンタルの流れ</a>
+    <a href="#case">検査事例</a>
+  </nav>
+  <a class="tel" href="tel:0339310521">03-3931-0521</a>
+  <a class="cta" href="#contact">サンプルテスト・ご相談</a>
+</header>
+
+<!-- ============ MV：正方形タイルのモザイク ============ -->
+<section class="mv" id="top">
+  <div class="gal" id="gal">
+    <div class="group" data-speed="38">
+      <div class="run">
+      <div class="tile"><video src="images/mv/mv_conveyor.mp4" poster="images/mv/mv_1_conveyor.png" muted loop playsinline autoplay preload="auto" aria-label="コンベア式金属探知機"></video></div>
+      <div class="tile"><img src="images/mv/mv_5_needle.png" alt="検針機"></div>
+      <div class="tile"><img src="images/mv/mv_6_factory.png" alt="食品工場の検査ライン"></div>
+      <div class="tile"><img src="images/mv/mv_8_sampletest.png" alt="サンプルテスト"></div>
+      <div class="tile"><img src="images/mv/mv_1_conveyor.png" alt="コンベア式金属探知機" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_5_needle.png" alt="検針機" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_6_factory.png" alt="食品工場の検査ライン" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_8_sampletest.png" alt="サンプルテスト" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="group" data-speed="-48">
+      <div class="run">
+      <div class="tile"><img src="images/mv/mv_4_handheld.png" alt="ハンディ型金属探知機"></div>
+      <div class="tile"><video src="images/mv/mv_xray.mp4" poster="images/mv/mv_2_xray.png" muted loop playsinline autoplay preload="auto" aria-label="X線検査機"></video></div>
+      <div class="tile"><img src="images/mv/mv_3_gate.png" alt="ゲート式金属探知機"></div>
+      <div class="tile"><img src="images/mv/mv_1_conveyor.png" alt="コンベア式金属探知機"></div>
+      <div class="tile"><img src="images/mv/mv_4_handheld.png" alt="ハンディ型金属探知機" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_2_xray.png" alt="X線検査機" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_3_gate.png" alt="ゲート式金属探知機" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_1_conveyor.png" alt="コンベア式金属探知機" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="group" data-speed="44">
+      <div class="run">
+      <div class="tile"><img src="images/mv/mv_6_factory.png" alt="食品工場の検査ライン"></div>
+      <div class="tile"><video src="images/mv/mv_gate.mp4" poster="images/mv/mv_3_gate.png" muted loop playsinline autoplay preload="auto" aria-label="ゲート式金属探知機"></video></div>
+      <div class="tile"><img src="images/mv/mv_8_sampletest.png" alt="サンプルテスト"></div>
+      <div class="tile"><img src="images/mv/mv_2_xray.png" alt="X線検査機"></div>
+      <div class="tile"><img src="images/mv/mv_6_factory.png" alt="食品工場の検査ライン" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_3_gate.png" alt="ゲート式金属探知機" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_8_sampletest.png" alt="サンプルテスト" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_2_xray.png" alt="X線検査機" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="group" data-speed="-34">
+      <div class="run">
+      <div class="tile"><img src="images/mv/mv_8_sampletest.png" alt="サンプルテスト"></div>
+      <div class="tile"><video src="images/mv/mv_technician.mp4" poster="images/mv/mv_7_technician.png" muted loop playsinline autoplay preload="auto" aria-label="技術者による設置・設定"></video></div>
+      <div class="tile"><img src="images/mv/mv_1_conveyor.png" alt="コンベア式金属探知機"></div>
+      <div class="tile"><img src="images/mv/mv_5_needle.png" alt="検針機"></div>
+      <div class="tile"><img src="images/mv/mv_8_sampletest.png" alt="サンプルテスト" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_7_technician.png" alt="技術者による設置・設定" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_1_conveyor.png" alt="コンベア式金属探知機" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_5_needle.png" alt="検針機" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="group" data-speed="52">
+      <div class="run">
+      <div class="tile"><img src="images/mv/mv_3_gate.png" alt="ゲート式金属探知機"></div>
+      <div class="tile"><img src="images/mv/mv_7_technician.png" alt="技術者による設置・設定"></div>
+      <div class="tile"><img src="images/mv/mv_4_handheld.png" alt="ハンディ型金属探知機"></div>
+      <div class="tile"><img src="images/mv/mv_6_factory.png" alt="食品工場の検査ライン"></div>
+      <div class="tile"><img src="images/mv/mv_3_gate.png" alt="ゲート式金属探知機" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_7_technician.png" alt="技術者による設置・設定" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_4_handheld.png" alt="ハンディ型金属探知機" loading="lazy"></div>
+      <div class="tile"><img src="images/mv/mv_6_factory.png" alt="食品工場の検査ライン" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+  <div class="veil"></div>
+  <div class="inner">
+    <div class="box">
+      <div class="en">INSPECTION EQUIPMENT RENTAL</div>
+      <h1>「取れない異物」が出た日に、<br><span class="mk">翌日</span>から使える検査機を。</h1>
+      <p class="lead">金属探知機・X線検査機・検針機を、必要な期間だけ。<br>
+        機械を置いて終わりではなく、技術者が現地で設置・設定・回収まで行います。</p>
+      <div class="pills">
+        <span>サンプルテストは結果がその場で</span>
+        <span>最短翌日レンタル</span>
+        <span>全国対応</span>
+      </div>
+      <div class="acts">
+        <a class="a1" href="#contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h9a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V8z"/><path d="M9 4v4H5"/><path d="M8.5 13h7M8.5 17h4"/></svg>
+          かんたん見積依頼</a>
+        <a class="a2" href="#products">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/></svg>
+          製品を探す</a>
+        <a class="a2" href="#purpose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8z"/></svg>
+          課題から探す</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll">SCROLL</div>
+</section>
+
+<!-- ============ 用途から探す ============ -->
+<section class="sec use wrap" id="purpose">
+  <div class="col rv">
+    <div class="hg"><h2 data-fill>Purpose</h2><p>用途から探す</p></div>
+    <p style="font-size:calc(var(--u)*1.4);color:#4A5561;line-height:2.15;">
+      機種の型番が決まっていなくても構いません。「何を、どこで、どう検査したいか」からお選びいただければ、
+      最適な一台をご提案します。</p>
+  </div>
+  <div class="grid">
+    <a class="uc rv" href="#contact">
+      <div class="ph"><img src="images/mv/mv_6_factory.png" alt="食品工場の異物混入対策"></div>
+      <div class="tx">
+        <div class="no">PURPOSE 01</div>
+        <h3>食品工場の<br>異物混入対策</h3>
+        <p>既設の検査機では取れない異物が出たとき、より感度の高い機種を短期間だけ。原因の特定から出荷再開までを止めません。</p>
+        <div class="go">この用途の機種を見る</div>
+      </div>
+    </a>
+    <a class="uc rv" href="#contact">
+      <div class="ph"><img src="images/mv/mv_3_gate.png" alt="イベント・警備の手荷物検査"></div>
+      <div class="tx">
+        <div class="no">PURPOSE 02</div>
+        <h3>イベント・警備の<br>手荷物検査</h3>
+        <p>スポーツ大会、客船の入国審査、催事の入場ゲートなど。開催期間に合わせてゲート式・ハンディを台数でご用意します。</p>
+        <div class="go">この用途の機種を見る</div>
+      </div>
+    </a>
+    <a class="uc rv" href="#contact">
+      <div class="ph"><img src="images/mv/mv_5_needle.png" alt="アパレルの検針対応"></div>
+      <div class="tx">
+        <div class="no">PURPOSE 03</div>
+        <h3>アパレル・繊維の<br>検針対応</h3>
+        <p>縫製工程の折れ針対策に。検針機は取り扱える異物の範囲が限られるため、検体に合わせて機種を選定します。</p>
+        <div class="go">この用途の機種を見る</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ 製品カテゴリ ============ -->
+<section class="sec prod wrap" id="products">
+  <div class="col rv">
+    <div class="hg"><h2 data-fill>Products</h2><p>取扱製品</p></div>
+    <p style="font-size:calc(var(--u)*1.4);color:#4A5561;line-height:2.15;">
+      レンタルを主軸に、販売・中古販売にも対応しています。<br>掲載機種はすべて自社で保有・整備している実機です。</p>
+  </div>
+  <div class="grid">
+    <a class="pc rv" href="#contact">
+      <div class="ph"><img src="images/category_image_01.webp" alt="金属探知機"></div>
+      <div class="tx"><div class="en">METAL DETECTOR</div><h3>金属探知機</h3>
+        <p>コンベア式・落下式・ハンディ型・ゲート式。鉄・非鉄の金属異物を検出します。</p>
+        <span class="tag">レンタル / 販売</span></div>
+    </a>
+    <a class="pc rv" href="#contact">
+      <div class="ph"><img src="images/category_image_02.webp" alt="X線検査機"></div>
+      <div class="tx"><div class="en">X-RAY INSPECTION</div><h3>X線検査機</h3>
+        <p>金属だけでなく、樹脂・骨・石など非金属の異物も可視化。かみこみ検査にも対応。</p>
+        <span class="tag">レンタル / 販売</span></div>
+    </a>
+    <a class="pc rv" href="#contact">
+      <div class="ph"><img src="images/category_image_03.webp" alt="検針機"></div>
+      <div class="tx"><div class="en">NEEDLE DETECTOR</div><h3>検針機</h3>
+        <p>縫製品の折れ針・鉄片の検出に。アパレル・繊維製品の出荷前検査に用います。</p>
+        <span class="tag">レンタル / 販売</span></div>
+    </a>
+    <a class="pc rv" href="#contact">
+      <div class="ph"><img src="images/category_image_05.webp" alt="セキュリティ製品"></div>
+      <div class="tx"><div class="en">SECURITY</div><h3>セキュリティ製品</h3>
+        <p>手荷物検査機、ゲート式金属探知機、ボトル内液体検査装置など入場警備向け。</p>
+        <span class="tag">レンタル / 販売</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ 選ばれる理由 ============ -->
+<section class="sec why wrap" id="reason">
+  <div class="col rv" style="margin-bottom:calc(var(--u)*7);">
+    <div class="hg"><h2 data-fill>Reason</h2><p>選ばれる理由</p></div>
+  </div>
+
+  <div class="row rv">
+    <div class="fig"><video src="images/mv/mv_technician.mp4" poster="images/mv/mv_7_technician.png" muted loop playsinline autoplay></video></div>
+    <div>
+      <div class="no">01</div>
+      <h3>運ぶだけでは終わらない。<br>技術者が現地で設置・設定・回収まで。</h3>
+      <p>検査機は、置いただけでは狙った異物を検出できません。検体・包材・ラインの速度に合わせて感度を追い込む調整が必要です。
+        当社は技術者が現場へ伺い、設置から設定、期間終了後の回収までを一貫して行います。</p>
+      <div class="note">遠方の場合は機械を運送便で送り、技術者が現地で合流して設定いたします。</div>
+    </div>
+  </div>
+
+  <div class="row rv">
+    <div class="fig"><video src="images/mv/mv_xray.mp4" poster="images/mv/mv_2_xray.png" muted loop playsinline autoplay></video></div>
+    <div>
+      <div class="no">02</div>
+      <h3>「本当に取れるのか」を、<br>サンプルテストでその場で確認。</h3>
+      <p>実際の検体をお預かりし、どの機種でどこまで検出できるかを検証してからレンタルをお決めいただけます。
+        取れるか分からないまま機械をお貸しすることはありません。</p>
+      <div class="note">検体の送付・持ち込みに対応。結果はその場でご確認いただけます。</div>
+    </div>
+  </div>
+
+  <div class="row rv">
+    <div class="fig"><video src="images/mv/mv_conveyor.mp4" poster="images/mv/mv_1_conveyor.png" muted loop playsinline autoplay></video></div>
+    <div>
+      <div class="no">03</div>
+      <h3>1日から1か月まで。<br>必要な期間だけ、最短翌日で。</h3>
+      <p>異物混入は予告なく起こります。用途や検体に合わせて選べるだけの機種を自社で保有しているため、
+        お問い合わせから最短翌日でお届けできる体制を取っています。</p>
+      <div class="note">購入・中古販売・リースにも対応しています。用途に応じてご相談ください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ レンタルの流れ ============ -->
+<section class="sec flow wrap" id="flow">
+  <div class="col rv">
+    <div class="hg"><h2 data-fill>Flow</h2><p>レンタルの流れ</p></div>
+    <p style="font-size:calc(var(--u)*1.4);color:#4A5561;line-height:2.15;">
+      お問い合わせから返却まで、担当者が一貫して対応します。</p>
+  </div>
+  <div class="steps">
+    <div class="st rv"><div class="n">STEP 01</div><h4>ご相談</h4><p>「何に何が入ったか」をお聞かせください。お電話でも結構です。</p></div>
+    <div class="st rv"><div class="n">STEP 02</div><h4>サンプルテスト</h4><p>検体をお預かりし、検出できるかを実機で検証します。</p></div>
+    <div class="st rv"><div class="n">STEP 03</div><h4>お見積り・ご契約</h4><p>機種と期間を確定し、お見積りをご提示します。</p></div>
+    <div class="st rv"><div class="n">STEP 04</div><h4>設置・ご使用</h4><p>技術者が現地で設置・設定。使い方もその場でご説明します。</p></div>
+    <div class="st rv"><div class="n">STEP 05</div><h4>回収</h4><p>期間終了後、当社が引き取ります。延長のご相談も可能です。</p></div>
+  </div>
+</section>
+
+<!-- ============ 検査事例 ============ -->
+<section class="sec case wrap" id="case">
+  <div class="col rv">
+    <div class="hg"><h2 data-fill>Case</h2><p>検査事例</p></div>
+    <p style="font-size:calc(var(--u)*1.4);color:#4A5561;line-height:2.15;">
+      実際にお受けした検査の一部です。お客様名は伏せ、検体と使用機種のみ掲載しています。</p>
+  </div>
+  <div class="grid">
+    <div class="cc rv">
+      <span class="cat">食品</span>
+      <h4>ペット用鹿肉ジャーキーを<br>袋のまま検査</h4>
+      <dl><dt>検体</dt><dd>個包装されたジャーキー</dd>
+        <dt>使用機種</dt><dd>金属探知機・X線検査機</dd>
+        <dt>結果</dt><dd>包装したままの状態で金属片を検出</dd></dl>
+    </div>
+    <div class="cc rv">
+      <span class="cat">化粧品</span>
+      <h4>化粧筆に混入した<br>金属異物をX線で可視化</h4>
+      <dl><dt>検体</dt><dd>化粧筆（毛材・金具付き）</dd>
+        <dt>使用機種</dt><dd>X線検査機</dd>
+        <dt>結果</dt><dd>金具に紛れた異物の位置を画像で特定</dd></dl>
+    </div>
+    <div class="cc rv">
+      <span class="cat">食肉</span>
+      <h4>食肉に混入した<br>鉛弾を検出</h4>
+      <dl><dt>検体</dt><dd>精肉ブロック</dd>
+        <dt>使用機種</dt><dd>X線検査機</dd>
+        <dt>結果</dt><dd>金属探知機では困難な検体で鉛弾を検出</dd></dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-sec" id="contact">
+  <div class="in">
+    <div class="en rv">CONTACT</div>
+    <h2 class="rv">まずは「何に何が入ったか」だけ、<br>お聞かせください。</h2>
+    <p class="rv">機種が決まっていなくても構いません。検体と状況をお伺いし、検出できる機種があるかをその場でご回答します。
+      お急ぎの場合はお電話のほうが早くご案内できます。</p>
+    <div class="btns rv">
+      <a class="b1" href="#">サンプルテストを申し込む</a>
+      <a class="b2" href="#">レンタルのお見積り・ご相談</a>
+    </div>
+    <div class="tel rv"><b>03-3931-0521</b><span>受付時間 平日 9:00〜17:30 ／ FAX 03-3931-0977</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="in">
+    <div>
+      <div class="mark"><img src="images/logo_sunmonitor_full.png" alt="株式会社サンモニター"></div>
+      <div class="addr">
+        株式会社サンモニター<br>
+        〒175-0045 東京都板橋区西台4-7-2<br>
+        TEL 03-3931-0521 ／ FAX 03-3931-0977
+      </div>
+    </div>
+    <nav>
+      <div><b>用途から探す</b>
+        <a href="#">食品工場の異物混入対策</a>
+        <a href="#">イベント・警備の手荷物検査</a>
+        <a href="#">アパレル・繊維の検針対応</a>
+      </div>
+      <div><b>取扱製品</b>
+        <a href="#">金属探知機</a><a href="#">X線検査機</a>
+        <a href="#">検針機</a><a href="#">セキュリティ製品</a>
+      </div>
+      <div><b>サンモニターについて</b>
+        <a href="#">選ばれる理由</a><a href="#">レンタルの流れ</a>
+        <a href="#">検査事例</a><a href="#">会社案内</a>
+      </div>
+    </nav>
+  </div>
+  <div class="cp">
+    <span>&copy; SUNMONITOR CO., LTD.</span>
+    <span>デザイン案A（制作：株式会社ITLINE ／ 提案：株式会社インフォネット）</span>
+  </div>
+</footer>
+
+<div class="memo">
+  <div>
+    ※ 本ページは<b>デザイン案A</b>です。実際に動くHTMLとして制作しています。<br>
+    ※ メインビジュアルの立体イラスト・動画は、貴社の取扱製品をもとに<b>本提案用に生成したイメージ</b>です。実制作時は実機の撮影素材またはご提供素材に差し替えます。<br>
+    ※ 製品カテゴリの写真は現行サイトの画像を使用しています。保有機種数などの数値は、確定後に掲載内容を調整します。
+  </div>
+</div>
+
+<script>
+/* 読み込み完了前の play() は失敗するため、canplay/loadeddata で再試行する */
+function tryPlay(v){
+  if(v.dataset.want!=='1') return;
+  const p=v.play();
+  if(p && p.catch) p.catch(()=>{});
+}
+
+/* --- スクロール表示 --- */
+/* フォールバック必須：IntersectionObserver が動かない／発火しない環境
+   （タブが非表示、描画が止まっている、古いブラウザ等）でも
+   コンテンツが透明のまま残らないよう、一定時間で必ず表示する */
+const revealAll = ()=>{
+  document.querySelectorAll('.rv').forEach(el=>el.classList.add('on'));
+  document.querySelectorAll('video').forEach(v=>{ v.dataset.want='1'; tryPlay(v); });
+};
+let ioFired = false;
+if('IntersectionObserver' in window){
+  const io = new IntersectionObserver((es)=>{
+    ioFired = true;
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  },{threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv').forEach((el,i)=>{ el.style.transitionDelay=(i%4*70)+'ms'; io.observe(el); });
+  setTimeout(()=>{ if(!ioFired) revealAll(); }, 1200);
+}else{
+  revealAll();
+}
+
+/* --- MVモザイク：常時流れる無限マーキー（参考サイトの実測＝約94px/秒で列が自動で流れる） ---
+   スクロールしていなくても動き続け、スクロール時は視差を上乗せする。
+   タイルは2周ぶん出力してあるので、1周ぶん進んだら位置を戻してシームレスに繋ぐ。 */
+const mvEl=document.querySelector('.mv');
+const cols=[...document.querySelectorAll('#gal .group')].map((g,i)=>({
+  el:g, run:g.querySelector('.run'),
+  speed:parseFloat(g.dataset.speed||0),   /* px/秒（負は下方向） */
+  para:[0.10,-0.16,0.13,-0.11,0.08][i]||0, /* スクロール視差の係数 */
+  off:0, loop:0
+}));
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function measure(){
+  cols.forEach(c=>{
+    const tiles=c.run.children;
+    if(!tiles.length) return;
+    const th=tiles[0].getBoundingClientRect().height;
+    const gap=parseFloat(getComputedStyle(c.run).rowGap)||0;
+    /* 2周ぶん出力しているので、1周分＝半分の枚数×(タイル高+隙間) */
+    c.loop=(tiles.length/2)*(th+gap);
+    /* 列ごとに開始位置をずらして市松に見せる */
+    if(!c.started){ c.off = -c.loop*[0,0.35,0.12,0.55,0.25][cols.indexOf(c)]; c.started=true; }
+  });
+}
+
+let last=performance.now(), mvVisible=true;
+function frame(now){
+  const dt=Math.min(0.05,(now-last)/1000); last=now;
+  if(mvVisible){
+    const y=window.scrollY;
+    cols.forEach(c=>{
+      if(!reduce && c.loop>0){
+        c.off -= c.speed*dt;
+        /* 1周ぶん進んだら戻す（見た目は完全に連続） */
+        while(c.off <= -c.loop) c.off += c.loop;
+        while(c.off > 0) c.off -= c.loop;
+      }
+      c.run.style.transform='translate3d(0,'+(c.off + y*c.para)+'px,0)';
+    });
+  }
+  requestAnimationFrame(frame);
+}
+window.addEventListener('load', measure);
+window.addEventListener('resize', ()=>{ cols.forEach(c=>c.started=false); measure(); });
+measure();
+requestAnimationFrame(frame);
+/* MVが画面外なら計算を止める（負荷対策） */
+if('IntersectionObserver' in window){
+  new IntersectionObserver(es=>{ mvVisible=es[0].isIntersecting; },{threshold:0}).observe(mvEl);
+}
+
+/* --- 英字見出しの塗り上げ（参考サイトの --hgroup-stop と同じ仕組み） --- */
+const fills=[...document.querySelectorAll('[data-fill]')];
+function paint(){
+  const vh=window.innerHeight;
+  fills.forEach(h=>{
+    const r=h.getBoundingClientRect();
+    /* 画面下から 62% の位置を通過する間に 0%→100% で塗り上げる */
+    const p=Math.min(1,Math.max(0,(vh*0.92 - r.top)/(vh*0.30)));
+    const stop=(p*100).toFixed(1)+'%';
+    h.style.backgroundImage='linear-gradient(to top, var(--blue) '+stop+', var(--line) '+stop+')';
+  });
+}
+let ticking=false;
+function onScroll(){
+  if(!ticking){ ticking=true; requestAnimationFrame(()=>{ paint(); ticking=false; }); }
+  document.querySelector('.hd').classList.toggle('stuck', window.scrollY>8);
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+window.addEventListener('resize', paint);
+paint();
+
+/* --- 動画の再生制御 --- */
+/* 既定は再生。画面外に出たものだけ IO で止める（IOが動かなくても再生は続く） */
+document.querySelectorAll('video').forEach(v=>{
+  v.muted=true; v.setAttribute('muted','');
+  v.dataset.want='1';
+  v.addEventListener('loadeddata',()=>tryPlay(v));
+  v.addEventListener('canplay',()=>tryPlay(v));
+  tryPlay(v);
+});
+if('IntersectionObserver' in window){
+  const vio=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      const v=e.target;
+      if(e.isIntersecting){ v.dataset.want='1'; tryPlay(v); }
+      else { v.dataset.want='0'; v.pause(); }
+    });
+  },{threshold:.05});
+  document.querySelectorAll('video').forEach(v=>vio.observe(v));
+}
+/* タブ復帰時に再生を戻す */
+document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden) document.querySelectorAll('video').forEach(v=>tryPlay(v));
+});
+</script>
+</body>
+</html>

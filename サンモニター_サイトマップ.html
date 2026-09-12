@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社サンモニター様 リニューアル後 想定サイトマップ（案）</title>
+<style>
+  :root{
+    --ink:#2b2b2b; --accent:#f7701b; --accent-dark:#c65505; --green:#2e7d54; --blue:#2f6bb0;
+    --line:#d9d2c8; --bg:#faf7f2; --card:#ffffff; --new:#e0534f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Noto Sans JP","Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;}
+  .container{max-width:1180px;margin:0 auto;padding:40px 24px 80px;}
+  header.doc{border-bottom:3px solid var(--accent);padding-bottom:20px;margin-bottom:28px;}
+  .doc .en{color:var(--accent);font-size:12px;letter-spacing:.25em;font-weight:700;}
+  .doc h1{font-size:26px;margin-top:6px;}
+  .doc .meta{color:#777;font-size:12.5px;margin-top:8px;}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:12.5px;margin-bottom:30px;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:4px;padding:1px 7px;line-height:1.6;}
+  .tag.new{background:var(--new);color:#fff;}
+  .tag.keep{background:#e8e2d8;color:#6b6152;}
+  .tag.db{background:var(--blue);color:#fff;}
+  .tag.merge{background:var(--green);color:#fff;}
+  h2.sec{font-size:19px;margin:44px 0 6px;padding-left:12px;border-left:5px solid var(--accent);}
+  .sec-note{font-size:12.5px;color:#777;margin-bottom:16px;}
+  .tree{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 28px;overflow-x:auto;}
+  ul.map, ul.map ul{list-style:none;}
+  ul.map ul{margin-left:26px;padding-left:18px;border-left:2px dotted #cbbfae;}
+  ul.map li{margin:7px 0;position:relative;}
+  ul.map ul li::before{content:"";position:absolute;left:-18px;top:13px;width:12px;height:2px;background:#cbbfae;}
+  .node{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:7px;padding:5px 12px;font-size:13.5px;flex-wrap:wrap;}
+  .node b{font-weight:600;}
+  .node .slug{color:#999;font-size:11px;font-family:Consolas,monospace;}
+  .node .role{color:#8a7f70;font-size:11px;}
+  .node.top{background:var(--accent);border-color:var(--accent);color:#fff;font-size:15px;padding:8px 18px;}
+  .node.top .slug,.node.top .role{color:#ffe3cc;}
+  .node.cat{background:#fff4ea;border-color:#f0b483;}
+  .node.conv{background:#eef6f0;border-color:#9cc7ad;}
+  .group-label{font-size:11.5px;font-weight:700;color:#a1937f;letter-spacing:.15em;margin:18px 0 4px;}
+  table.list{width:100%;border-collapse:collapse;background:var(--card);font-size:12.5px;margin-top:14px;}
+  table.list th,table.list td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
+  table.list th{background:#f3ede3;font-weight:600;white-space:nowrap;}
+  table.list td.num{text-align:right;white-space:nowrap;}
+  .note-box{background:#fff8ef;border:1px solid #f0cfa8;border-radius:10px;padding:16px 20px;font-size:13px;margin-top:26px;}
+  .note-box h3{font-size:14px;color:var(--accent-dark);margin-bottom:6px;}
+  .wrap-scroll{overflow-x:auto;}
+  footer.doc{margin-top:60px;padding-top:16px;border-top:1px solid var(--line);color:#999;font-size:11.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="doc">
+  <div class="en">PROPOSED SITEMAP</div>
+  <h1>株式会社サンモニター様　リニューアル後 想定サイトマップ（案）</h1>
+  <div class="meta">2026年9月7日｜株式会社インフォネット（制作パートナー：株式会社ITLINE）｜現行サイト www.sunmonitor.co.jp（現行 約300ページ／CMS：Joomla → WordPressへ移行）</div>
+</header>
+
+<div class="legend">
+  <span><span class="tag new">★新規</span> 新規作成ページ</span>
+  <span><span class="tag keep">既存</span> 現行コンテンツを流用・再構成</span>
+  <span><span class="tag merge">統合</span> 現行の複数ページ・製品を統合再編</span>
+  <span><span class="tag db">DB</span> 製品／記事データベース（絞り込み検索・一覧を自動生成）</span>
+  <span>表記＝ページ名／<span style="font-family:Consolas,monospace;color:#999;">URLスラッグ案</span>／役割</span>
+</div>
+
+<div class="note-box" style="margin-bottom:6px;">
+  <h3>この構成にした理由（設計方針）</h3>
+  <b>① 「新規レンタル問い合わせの獲得」を最優先に、成約に直結する導線を最短化しました。</b><br>
+　本サイトの最大目的はWeb経由の新規問い合わせを現状比120％以上に伸ばすことです。来訪者の多くは「金属探知機 レンタル」等で緊急・目的意識の高い状態で検索して来ます（自然検索での平均掲載順位1.96位）。そこで「製品から探す」「課題・用途から探す」「レンタルについて」の3導線をトップに大きく配置し、目的の製品と見積・問い合わせへ<b>3クリック以内</b>で到達できる階層にしました。<br><br>
+  <b>② 現行の“静的な手組み約300ページ”を、製品データベース（DB）へ再編します。</b><br>
+　現行サイトは製品を1商品1ページで静的に手組みしており、サイト内検索も一覧の自動生成もありません。リニューアルでは製品名・型番・カテゴリ・対応業界・レンタル/販売/中古のステータス・用途を一元管理するDBを構築し、<b>カテゴリ・業界・レンタル可否からの絞り込み検索</b>と一覧・関連ページへの自動反映を実現します。CSV一括投入で少人数運用でも更新できる設計です（RFP「製品情報の効率的管理」に対応）。<br><br>
+  <b>③ 現行にない「専門性を伝えるコンテンツ」を新設し、比較検討の土俵で勝てるサイトにします。</b><br>
+　競合（シロ産業・レックス等）に対し、サンモニター様の強みは「レンタル専門＋技術者が現地で設置・設定・回収まで対応」というピンポイント対応力です。この強みが現行サイトでは伝わっていないため、「導入事例」「よくある質問（FAQ）」「技術コラム・トラブル解決集」「選ばれる理由」を★新規で追加し、価格競争ではなく専門性で選ばれるサイトへ再構築します。<br><br>
+  <b>④ 採用サイトは今回スコープ外</b>とし、コーポレートサイト（単一サイト）に注力します（RFP・議事録で採用は今回度外視。将来的な採用サイト独立は別途フェーズで対応可能）。
+</div>
+
+<h2 class="sec">コーポレートサイト 全体構成</h2>
+<p class="sec-note">グローバルナビは「製品情報」「課題・用途から探す」「レンタルについて」「導入事例」「技術・サポート」「会社案内」の6導線＋常設CTA（お問い合わせ・見積依頼）。BtoB法人ユーザーが3クリック以内で製品・見積に到達できる階層に統一します。</p>
+
+<div class="tree">
+<ul class="map">
+<li><span class="node top"><b>トップページ</b><span class="slug">/</span><span class="role">強み訴求＋課題別ゲートウェイ＋主要製品＋お知らせ＋CTA</span></span>
+
+  <ul>
+  <!-- 1. 製品情報 -->
+  <li><span class="node cat"><b>製品情報</b><span class="slug">/products/</span><span class="role">製品から探す（DB化）</span><span class="tag merge">統合</span><span class="tag db">DB</span></span>
+    <ul>
+      <li><span class="node"><b>製品検索・絞り込み</b><span class="slug">/products/search/</span><span class="role">カテゴリ／業界／レンタル・販売可否／用途で絞り込み</span><span class="tag new">★新規</span><span class="tag db">DB</span></span></li>
+      <li><span class="node"><b>製品一覧（全件）</b><span class="slug">/products/list/</span><span class="role">DBから自動生成する全製品一覧</span><span class="tag new">★新規</span><span class="tag db">DB</span></span></li>
+      <li><span class="node"><b>金属探知機</b><span class="slug">/products/metal-detector/</span><span class="role">売上主力カテゴリのランディング</span><span class="tag merge">統合</span>
+        <ul>
+          <li><span class="node"><b>製品詳細（型番ごと）</b><span class="slug">/products/metal-detector/{id}/</span><span class="role">型番・用途・対応業界・レンタル/販売/中古ステータス・構造化データ対応</span><span class="tag keep">既存</span><span class="tag db">DB</span></span></li>
+        </ul>
+      </li>
+      <li><span class="node"><b>X線検査機</b><span class="slug">/products/x-ray/</span><span class="role">単価上位カテゴリ（異物混入対策の主力）</span><span class="tag merge">統合</span>
+        <ul><li><span class="node"><b>製品詳細（型番ごと）</b><span class="slug">/products/x-ray/{id}/</span><span class="tag keep">既存</span><span class="tag db">DB</span></span></li></ul>
+      </li>
+      <li><span class="node"><b>検針機</b><span class="slug">/products/needle-detector/</span><span class="role">アパレル・繊維向け</span><span class="tag merge">統合</span>
+        <ul><li><span class="node"><b>製品詳細（型番ごと）</b><span class="slug">/products/needle-detector/{id}/</span><span class="tag keep">既存</span><span class="tag db">DB</span></span></li></ul>
+      </li>
+      <li><span class="node"><b>セキュリティゲート・手荷物検査機</b><span class="slug">/products/security/</span><span class="role">イベント・施設の警備／入場検査向け</span><span class="tag merge">統合</span>
+        <ul><li><span class="node"><b>製品詳細（型番ごと）</b><span class="slug">/products/security/{id}/</span><span class="tag keep">既存</span><span class="tag db">DB</span></span></li></ul>
+      </li>
+    </ul>
+  </li>
+
+  <!-- 2. 課題・用途から探す -->
+  <li><span class="node cat"><b>課題・用途から探す</b><span class="slug">/solution/</span><span class="role">悩みベースの導線（課題解決型ナビ）</span><span class="tag new">★新規</span></span>
+    <ul>
+      <li><span class="node"><b>食品工場の異物混入対策</b><span class="slug">/solution/food-contamination/</span><span class="role">緊急の追加検査ニーズを製品・見積へ誘導</span><span class="tag new">★新規</span></span></li>
+      <li><span class="node"><b>イベント・施設の手荷物検査／警備</b><span class="slug">/solution/security-inspection/</span><span class="role">期間限定セキュリティレンタルの入口</span><span class="tag new">★新規</span></span></li>
+      <li><span class="node"><b>アパレル・繊維の検針</b><span class="slug">/solution/apparel-needle/</span><span class="role">針・鉄片対策ニーズの入口</span><span class="tag new">★新規</span></span></li>
+      <li><span class="node"><b>業界から探す</b><span class="slug">/solution/industry/</span><span class="role">食品／アパレル／イベント／物流 等の業界別入口</span><span class="tag new">★新規</span></span></li>
+    </ul>
+  </li>
+
+  <!-- 3. レンタルについて（成約強化） -->
+  <li><span class="node conv"><b>レンタルについて</b><span class="slug">/rental/</span><span class="role">成約率向上の中核（優先施策）</span><span class="tag new">★新規</span></span>
+    <ul>
+      <li><span class="node conv"><b>選ばれる理由</b><span class="slug">/rental/reason/</span><span class="role">即日発送・技術者が現地設置・豊富な在庫を言語化</span><span class="tag new">★新規</span></span></li>
+      <li><span class="node conv"><b>レンタルの流れ</b><span class="slug">/rental/flow/</span><span class="role">問い合わせ→設置→回収までの手順を可視化</span><span class="tag new">★新規</span></span></li>
+      <li><span class="node conv"><b>料金・費用について</b><span class="slug">/rental/price/</span><span class="role">レンタル料金の考え方・見積導線</span><span class="tag new">★新規</span></span></li>
+      <li><span class="node conv"><b>販売・中古販売・リース</b><span class="slug">/rental/sales/</span><span class="role">レンタル以外（購入・中古・リース）の受け皿</span><span class="tag new">★新規</span></span></li>
+    </ul>
+  </li>
+
+  <!-- 4. 導入事例 -->
+  <li><span class="node cat"><b>導入事例</b><span class="slug">/case/</span><span class="role">専門性・信頼の証明（比較検討で勝つ）</span><span class="tag new">★新規</span><span class="tag db">DB</span></span>
+    <ul>
+      <li><span class="node"><b>事例詳細（業界・製品タグ付き）</b><span class="slug">/case/{id}/</span><span class="role">活用シーンと効果を掲載。業界・製品で絞り込み</span><span class="tag new">★新規</span><span class="tag db">DB</span></span></li>
+    </ul>
+  </li>
+
+  <!-- 5. 技術・サポート -->
+  <li><span class="node cat"><b>技術・サポート</b><span class="slug">/support/</span><span class="role">問い合わせ前の不安解消＋専門性コンテンツ</span><span class="tag new">★新規</span></span>
+    <ul>
+      <li><span class="node"><b>よくある質問（FAQ）</b><span class="slug">/support/faq/</span><span class="role">電話で多い質問を掲載し問い合わせハードルを下げる</span><span class="tag new">★新規</span></span></li>
+      <li><span class="node"><b>技術コラム・トラブル解決集</b><span class="slug">/support/column/</span><span class="role">競合が真似できない専門コンテンツでSEO/AIO強化</span><span class="tag new">★新規</span><span class="tag db">DB</span></span></li>
+      <li><span class="node"><b>調整・校正・技術情報</b><span class="slug">/support/technical/</span><span class="role">機器の精度・調整に関する技術訴求</span><span class="tag new">★新規</span></span></li>
+    </ul>
+  </li>
+
+  <!-- 6. お知らせ -->
+  <li><span class="node cat"><b>お知らせ・トピックス</b><span class="slug">/news/</span><span class="role">技術講習・受付開始等の告知（現行機能を再構成）</span><span class="tag keep">既存</span><span class="tag db">DB</span></span>
+    <ul>
+      <li><span class="node"><b>お知らせ詳細（記事）</b><span class="slug">/news/{id}/</span><span class="role">既存記事をDBへ移行</span><span class="tag keep">既存</span><span class="tag db">DB</span></span></li>
+    </ul>
+  </li>
+
+  <!-- 7. 会社案内 -->
+  <li><span class="node cat"><b>会社案内</b><span class="slug">/company/</span><span class="tag merge">統合</span></span>
+    <ul>
+      <li><span class="node"><b>会社概要・沿革</b><span class="slug">/company/about/</span><span class="tag keep">既存</span></span></li>
+      <li><span class="node"><b>事業内容・私たちの強み</b><span class="slug">/company/business/</span><span class="role">「レンタル専門＋技術者設置」の独自価値を言語化</span><span class="tag new">★新規</span></span></li>
+      <li><span class="node"><b>交通アクセス</b><span class="slug">/company/access/</span><span class="tag keep">既存</span></span></li>
+      <li><span class="node"><b>プライバシーポリシー</b><span class="slug">/privacy/</span><span class="tag keep">既存</span></span></li>
+    </ul>
+  </li>
+
+  <!-- 8. お問い合わせ -->
+  <li><span class="node conv"><b>お問い合わせ・見積依頼・資料請求</b><span class="slug">/contact/</span><span class="role">CV最適化（フォーム落ち改善）</span><span class="tag new">★新規</span></span>
+    <ul>
+      <li><span class="node conv"><b>お問い合わせフォーム</b><span class="slug">/contact/</span><span class="role">EFO対応・入力補助でフォーム落ちを抑制</span><span class="tag new">★新規</span></span></li>
+      <li><span class="node conv"><b>見積依頼</b><span class="slug">/contact/estimate/</span><span class="role">製品詳細から製品情報を引き継いで見積依頼</span><span class="tag new">★新規</span></span></li>
+      <li><span class="node conv"><b>資料請求</b><span class="slug">/contact/document/</span><span class="role">検討段階のリード獲得</span><span class="tag new">★新規</span></span></li>
+    </ul>
+  </li>
+  </ul>
+</li>
+</ul>
+
+<div class="group-label">共通要素（全ページ）</div>
+<ul class="map">
+  <li><span class="node"><b>ヘッダー</b><span class="role">ロゴ／グローバルナビ（6導線）／サイト内検索★／電話番号・お問い合わせCTA（常時固定）</span></span></li>
+  <li><span class="node"><b>フッター</b><span class="role">サイトマップ全展開型／会社情報・電話／プライバシーポリシー／推奨環境</span></span></li>
+  <li><span class="node"><b>パンくずリスト</b><span class="role">現在位置を常に表示（RFP要件）</span></span></li>
+  <li><span class="node"><b>サイト内検索</b><span class="role">全ページ横断検索（現行にない機能を新設）</span><span class="tag new">★新規</span></span></li>
+  <li><span class="node"><b>追従CTA（SP）</b><span class="role">スマホでは画面下部に「電話」「見積依頼」を固定（利用者の53％がスマホ）</span><span class="tag new">★新規</span></span></li>
+</ul>
+</div>
+
+<h2 class="sec">★新規ページを追加する理由</h2>
+<p class="sec-note">現行サイトにないページを★新規として追加しています。いずれもRFPのKPI（Web経由の月間問い合わせ件数を現状比120％以上）に直接つながるページとして選定し、KPIに寄与しない「あったら良い」ページは追加していません。</p>
+<div class="wrap-scroll">
+<table class="list">
+  <tr><th>新規ページ</th><th>なぜ必要か（現状の課題）</th><th>期待できること</th></tr>
+  <tr><td><b>製品検索・絞り込み／製品一覧</b><br><span style="color:#999;font-size:11px;">/products/search/ ・/list/</span></td><td>現行は製品を静的な手組みページで管理し、サイト内検索も一覧の自動生成もない。目的の製品にたどり着きにくい。</td><td>カテゴリ・業界・レンタル可否から素早く製品到達。3クリック以内の導線を実現し離脱を抑制。</td></tr>
+  <tr><td><b>課題・用途から探す</b><br><span style="color:#999;font-size:11px;">/solution/ 配下 計4P</span></td><td>「異物混入対策」など悩みベースで訪れる新規客への導線が現行にない（インフォネット現状分析より）。</td><td>緊急ニーズの見込み客を製品・見積へ直結。新規問い合わせの増加（KPI）。</td></tr>
+  <tr><td><b>レンタルについて</b><br><span style="color:#999;font-size:11px;">/rental/ 配下 計5P</span></td><td>アクセスの多いレンタル関連ページで「選ばれる理由」が言語化されておらず、成約前に離脱している。</td><td>即日発送・技術者設置・在庫を明示し成約率を向上。優先施策として最短で効果。</td></tr>
+  <tr><td><b>導入事例</b><br><span style="color:#999;font-size:11px;">/case/</span></td><td>強みや実績を伝えるコンテンツが不足し、他社と比較検討の土俵に乗れていない。</td><td>専門性・信頼の可視化。競合が真似できない差別化コンテンツでコンバージョン向上。</td></tr>
+  <tr><td><b>よくある質問（FAQ）</b><br><span style="color:#999;font-size:11px;">/support/faq/</span></td><td>電話で多い質問がWeb上で解消されず、問い合わせをためらう層を取りこぼしている。</td><td>不安の事前解消で問い合わせハードルが低下。電話対応の負担も軽減。</td></tr>
+  <tr><td><b>技術コラム・トラブル解決集／技術情報</b><br><span style="color:#999;font-size:11px;">/support/column/ ・/technical/</span></td><td>専門性（技術・調整力）を伝えるコンテンツが現行にない。SEO/AIO上の評価源も不足。</td><td>専門性の訴求と検索・生成AI経由の集客強化（質の高い関連キーワードで流入）。</td></tr>
+  <tr><td><b>事業内容・私たちの強み</b><br><span style="color:#999;font-size:11px;">/company/business/</span></td><td>「レンタル専門＋技術者が現地設置まで」の独自価値が言語化されていない。</td><td>新規顧客への信頼獲得。トップの「営業マン化」と連動し直帰率を改善。</td></tr>
+  <tr><td><b>お問い合わせ／見積依頼／資料請求</b><br><span style="color:#999;font-size:11px;">/contact/ 配下 計3P</span></td><td>問い合わせフォームでの離脱（フォーム落ち）が多数。用件別の受け皿もない。</td><td>EFO最適化と用件別導線で完了率を改善。見積・資料請求のリード獲得（KPI）。</td></tr>
+</table>
+</div>
+
+<h2 class="sec">ページ一覧表（規模サマリー）</h2>
+<div class="wrap-scroll">
+<table class="list">
+  <tr><th>区分</th><th>内容</th><th class="num">規模</th><th>新規/既存</th><th>備考（後工程の対応）</th></tr>
+  <tr><td>トップページ</td><td>グローバルデザイン（強み訴求・3導線ゲートウェイ）</td><td class="num">1P</td><td>リニューアル</td><td>PC/SP TOPグローバルデザイン・コーディング</td></tr>
+  <tr><td>製品カテゴリLP</td><td>金属探知機／X線検査機／検針機／セキュリティゲート・手荷物検査</td><td class="num">4P</td><td>統合再構成</td><td>独自レイアウト（DB連動一覧を内包）</td></tr>
+  <tr><td>製品検索・一覧</td><td>製品検索・絞り込み／製品一覧（全件）</td><td class="num">2P</td><td>★新規</td><td>製品DB＋絞り込み検索機能</td></tr>
+  <tr><td>課題・用途から探す</td><td>異物混入対策／手荷物検査・警備／検針／業界から探す</td><td class="num">4P</td><td>★新規</td><td>課題解決型ランディング</td></tr>
+  <tr><td>レンタルについて</td><td>選ばれる理由／流れ／料金／販売・中古・リース</td><td class="num">4P</td><td>★新規</td><td>成約率向上ページ（優先施策）</td></tr>
+  <tr><td>導入事例</td><td>事例一覧（DB絞り込み）</td><td class="num">1P</td><td>★新規</td><td>事例DB（詳細記事は下記データ登録）</td></tr>
+  <tr><td>技術・サポート</td><td>FAQ／技術コラム・トラブル解決集／技術情報</td><td class="num">3P</td><td>★新規</td><td>FAQ・コラムDB</td></tr>
+  <tr><td>お知らせ</td><td>お知らせ・トピックス一覧</td><td class="num">1P</td><td>既存再構成</td><td>お知らせDB（記事は下記データ登録）</td></tr>
+  <tr><td>会社案内</td><td>会社概要・沿革／事業内容・強み★／アクセス／プライバシー</td><td class="num">4P</td><td>既存＋★新規</td><td>「事業内容・強み」のみ★新規</td></tr>
+  <tr><td>お問い合わせ</td><td>お問い合わせ／見積依頼／資料請求</td><td class="num">3P</td><td>★新規</td><td>EFO最適化フォーム（3種）</td></tr>
+  <tr><td style="background:#eef6f0"><b>固定・レイアウトページ 小計</b></td><td style="background:#eef6f0">上記の合計（うち★新規 18P）</td><td class="num" style="background:#eef6f0"><b>27P</b></td><td style="background:#eef6f0"><b>★新規18／既存・再構成9</b></td><td style="background:#eef6f0">見積・WFの単価算定基準</td></tr>
+  <tr><td>製品詳細（DB）</td><td>型番ごとの製品詳細ページ（金属探知機・X線・検針機・セキュリティ）</td><td class="num">約90件<br>（要確定）</td><td>全件移行＋DB再登録</td><td>X線・金属探知機 約90種類ベース。ゲート式等の同型複数は代表ページ化。<b>正確な製品数は同社確認中（〜9/18）</b></td></tr>
+  <tr><td>データ登録（お知らせ）</td><td>既存お知らせ・トピックス記事</td><td class="num">別途精査</td><td>全件移行</td><td>現行約300ページ精査時に確定</td></tr>
+  <tr><td>データ登録（導入事例）</td><td>導入事例記事</td><td class="num">初期◯件<br>（要相談）</td><td>★新規登録</td><td>公開時初期本数を同社と協議</td></tr>
+  <tr><td colspan="2"><b>制作対象 合計（目安）</b></td><td class="num"><b>固定27P ＋ 製品DB約90件 ＋ データ移行</b></td><td colspan="2">現行 約300ページを整理・統廃合し上記へ再編（RFP「コンテンツの整理・統廃合」に対応）</td></tr>
+</table>
+</div>
+
+<div class="note-box">
+  <h3>設計上の注記（後工程への申し送り）</h3>
+  ・<b>本サイトマップが、ワイヤーフレーム・デザイン案・御見積書・御提案書すべての土台</b>です。ページ名・階層・URLスラッグ・★新規/既存の区分は本図で確定とし、後工程はこれに整合させてください。<br>
+  ・<b>製品詳細の件数（約90件）は暫定値</b>です。現行サイトの製品数を同社へ確認中（RFP質問締切 9/18）。確定次第、DB登録件数・御見積の「データ登録」項目に反映します。<br>
+  ・現行CMS「Joomla（PHP 5.6.33／管理画面が外部到達可）」のセキュリティ懸念を、<b>WordPressへの移行と指定サーバー対応で解消</b>します。旧URLは<b>301リダイレクト設計</b>で既存SEO評価（ドメイン資産）を維持します。<br>
+  ・製品ページは<b>製品ごとに構造化データ</b>を付与し、SEO/AIO評価を高めます。破損内部リンク714件（インフォネット診断）はリニューアル時に解消します。<br>
+  ・<b>採用サイトは今回スコープ外</b>（RFP・議事録で採用は度外視）。将来的な採用サイトの独立構築は別フェーズで対応可能なことを提案書に補足します。<br>
+  ・スマホ利用が53％のため<b>モバイルファースト設計</b>。SPは画面下部に「電話」「見積依頼」を追従表示します。
+</div>
+
+<footer class="doc">
+  <span>株式会社サンモニター様　WEBサイトリニューアル 想定サイトマップ（案）</span>
+  <span>© infoNet inc. All Rights Reserved.　CONFIDENTIAL</span>
+</footer>
+</div>
+</body>
+</html>
