@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>株式会社サンモニター様｜WEBサイトリニューアル ご提案一覧</title>
+<style>
+  :root{
+    --navy:#004299; --navy-d:#0b224e; --ink:#222; --gray:#6b7280;
+    --line:#e3e7ee; --bg:#f4f6fa; --card:#fff;
+    --orange:#f7701b; --green:#1e5b41; --soon:#8a94a6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Noto Sans JP","Yu Gothic Medium","Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif;color:var(--ink);background:var(--bg);line-height:1.8;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .inner{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  header.hero{background:linear-gradient(120deg,var(--navy-d) 0%,var(--navy) 70%,#1b64c4 100%);color:#fff;padding:56px 0 46px;}
+  .hero .en{letter-spacing:.35em;font-size:12px;font-weight:700;color:#9fc0ef;}
+  .hero h1{font-size:30px;margin-top:10px;line-height:1.5;}
+  .hero p.sub{margin-top:12px;color:#cfdff5;font-size:14px;}
+  .hero .meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:22px;font-size:12.5px;color:#e7effc;}
+  .hero .quick{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+  .hero .quick b{font-size:12.5px;color:#cfdff5;font-weight:700;margin-right:4px;}
+  .hero .quick a{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy-d);font-weight:700;font-size:14px;border-radius:999px;padding:11px 22px;box-shadow:0 4px 14px rgba(0,0,0,.18);transition:.2s;}
+  .hero .quick a:hover{transform:translateY(-2px);}
+  .hero .quick a i{font-style:normal;font-size:11px;color:#fff;background:var(--navy);border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;}
+  @media(max-width:700px){.hero .quick a{width:100%;justify-content:flex-start;}}
+  .hero .meta span{background:rgba(255,255,255,.12);border-radius:999px;padding:5px 18px;}
+
+  section{padding:52px 0 8px;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;}
+  .sec-head h2{font-size:20px;color:var(--navy-d);}
+  .sec-head .en{color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.25em;}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .grid.g2{grid-template-columns:repeat(2,1fr);}
+  .grid.struct{align-items:start;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(20,40,90,.07);transition:.2s;display:flex;flex-direction:column;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(20,40,90,.14);}
+  .card.soon{opacity:.62;}
+  .card.soon:hover{transform:none;box-shadow:0 4px 16px rgba(20,40,90,.07);}
+  .card .ph{height:200px;overflow:hidden;background:#eef1f6;border-bottom:1px solid var(--line);position:relative;}
+  .card .ph img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+  .card .ph.band{display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,#0b224e 0%,#004299 70%,#1b64c4 100%);}
+  .card .ph.band span.t{color:#fff;font-size:15px;font-weight:700;letter-spacing:.08em;text-align:center;line-height:1.9;}
+  .card .ph.band span.t small{display:block;font-size:11px;color:#9fc0ef;letter-spacing:.3em;font-weight:700;}
+  .badge{position:absolute;top:10px;left:10px;font-size:11px;font-weight:700;color:#fff;border-radius:4px;padding:2px 10px;background:var(--navy);}
+  .badge.a{background:var(--orange);}
+  .badge.b{background:var(--green);}
+  .badge.soon{background:var(--soon);}
+  .card .tx{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column;}
+  .card h3{font-size:15.5px;color:var(--navy-d);}
+  .card p{font-size:12.5px;color:var(--gray);margin-top:6px;flex:1;}
+  .card .links{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;}
+  .btn{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:7px 18px;transition:.15s;}
+  .btn.p{background:var(--navy);color:#fff;}
+  .btn.p:hover{background:#0a5bc4;}
+  .btn.o{border:1.5px solid var(--navy);color:var(--navy);}
+  .btn.o:hover{background:#e8f0fb;}
+  .btn.d{border:1.5px solid #c6ccd6;color:#8a94a6;cursor:default;}
+  .dgroup{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:700;color:var(--navy-d);margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line);}
+  .dgroup .en{font-size:10.5px;letter-spacing:.2em;color:var(--navy);font-weight:700;}
+  .tag-new{display:inline-block;background:#e0534f;color:#fff;font-size:10px;border-radius:4px;padding:1px 8px;margin-left:6px;vertical-align:2px;}
+
+  table.map{width:100%;border-collapse:collapse;background:#fff;font-size:12.5px;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(20,40,90,.07);}
+  table.map th,table.map td{border-bottom:1px solid var(--line);padding:10px 16px;text-align:left;}
+  table.map th{background:var(--navy);color:#fff;font-weight:600;}
+  table.map tr:last-child td{border-bottom:none;}
+  table.map td.st{color:var(--green);font-weight:700;}
+  table.map td.pd{color:#8a94a6;font-weight:600;}
+
+  .note{background:#fff8ef;border:1px solid #f0cfa8;border-radius:12px;padding:16px 20px;font-size:12.5px;margin-top:26px;color:#7a5a30;}
+  footer{margin:56px 0 0;padding:22px 0 30px;border-top:1px solid var(--line);color:#9aa3b0;font-size:11.5px;}
+  footer .inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+
+  @media(max-width:900px){
+    .grid,.grid.g2{grid-template-columns:1fr;}
+    .hero h1{font-size:22px;}
+    section{padding:40px 0 4px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner">
+    <div class="en">PROPOSAL INDEX</div>
+    <h1>株式会社サンモニター様<br>WEBサイトリニューアル ご提案一覧</h1>
+    <p class="sub">株式会社インフォネット（制作・保守運用パートナー：株式会社ITLINE）｜2026年10月16日</p>
+    <div class="meta">
+      <span>公開目標：2027年5月</span>
+      <span>提出日：2026年10月16日</span>
+      <span>プレゼン：11月上旬／選定結果：11月中旬</span>
+    </div>
+    <div class="quick"><b>まずはこちらをお試しください</b>
+      <a href="サンモニター_デザイン案A_製品一覧.html" target="_blank"><i>1</i>製品データベースのデモ（現行86製品）</a>
+      <a href="#design"><i>2</i>動くデザイン案A〜D</a>
+      <a href="サンモニター様_御提案書.pdf" target="_blank"><i>3</i>御提案書（PDF）</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="inner">
+    <div class="sec-head"><h2>ご提案資料</h2><span class="en">DOCUMENTS</span></div>
+    <div class="grid">
+      <a class="card" href="サンモニター様_御提案書.pdf" target="_blank">
+        <div class="ph"><span class="badge">提案書</span><img src="shots/thumb_deck.png" alt="御提案書"></div>
+        <div class="tx">
+          <h3>御提案書（インフォネット書式）</h3>
+          <p>PDF・22ページ。現状分析・全体戦略・デザイン案・製品データベース・CMS・SEO・保守運用・スケジュールまで、ご提案の本編です。</p>
+          <div class="links"><span class="btn p">御提案書を開く（PDF）</span></div>
+        </div>
+      </a>
+      <a class="card" href="サンモニター様_運用サポート体制のご説明.pdf" target="_blank">
+        <div class="ph"><span class="badge">運用サポート</span><img src="shots/thumb_support.png" alt="運用サポート体制のご説明"></div>
+        <div class="tx">
+          <h3>運用サポート体制のご説明（概要編＋詳細編）</h3>
+          <p>PDF・23ページ。公開後のサポート窓口、更新の手順、保守・セキュリティの内容をまとめています。</p>
+          <div class="links"><span class="btn p">資料を開く（PDF）</span></div>
+        </div>
+      </a>
+      <a class="card" href="サンモニター様_プロジェクトの進め方.pdf" target="_blank">
+        <div class="ph"><span class="badge">進め方</span><img src="shots/thumb_guide.png" alt="プロジェクトの進め方"></div>
+        <div class="tx">
+          <h3>プロジェクトの進め方（進め方編／ダッシュボード編／移行計画編）</h3>
+          <p>PDF・23ページ。スケジュール、貴社にお願いすること、現行サイトからの移行の進め方です。</p>
+          <div class="links"><span class="btn p">資料を開く（PDF）</span></div>
+        </div>
+      </a>
+      <a class="card" href="追加資料_株式会社サンモニター御中.pdf" target="_blank">
+        <div class="ph"><span class="badge">追加資料</span><img src="shots/thumb_extra.png" alt="追加資料"></div>
+        <div class="tx">
+          <h3>追加資料（セキュリティ・会社案内・実績）</h3>
+          <p>PDF・22ページ。セキュリティ対策・会社概要・構築実績など、会社としての体制のご紹介です。</p>
+          <div class="links"><span class="btn p">追加資料を開く（PDF）</span></div>
+        </div>
+      </a>
+      <a class="card" href="サンモニター様_ご連絡方法と更新代行のご案内.pdf" target="_blank">
+        <div class="ph"><span class="badge">連絡・更新代行</span><img src="shots/thumb_contact.png" alt="ご連絡方法と更新代行のご案内"></div>
+        <div class="tx">
+          <h3>ご連絡方法と更新代行のご案内（追加別紙）</h3>
+          <p>PDF・12ページ。ご連絡の方法と、更新代行のご依頼から反映までの流れです。</p>
+          <div class="links"><span class="btn p">資料を開く（PDF）</span></div>
+        </div>
+      </a>
+    </div>
+    <p style="margin-top:14px;font-size:12px;color:#9aa3b0;">※ 御提案書が本編、ほかの4冊は運用・進行・会社体制の詳細です。御見積書は別途ご提示いたします。</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="sec-head"><h2>ダッシュボード（実際に動く画面イメージ）</h2><span class="en">DASHBOARDS</span></div>
+    <div class="grid g2">
+      <a class="card" href="サンモニター様_進捗ダッシュボード.html" target="_blank">
+        <div class="ph"><span class="badge">進捗ダッシュボード</span><img src="shots/thumb_dash.png" alt="進捗ダッシュボード"></div>
+        <div class="tx">
+          <h3>進捗ダッシュボード</h3>
+          <p>制作中の進み具合と、貴社にお願いしたいことが一目で分かる画面です（サンプル）。</p>
+          <div class="links"><span class="btn p">画面を開く</span></div>
+        </div>
+      </a>
+      <a class="card" href="サンモニター様_更新依頼ダッシュボード.html" target="_blank">
+        <div class="ph"><span class="badge">更新依頼ダッシュボード</span><img src="shots/thumb_req.png" alt="更新依頼ダッシュボード"></div>
+        <div class="tx">
+          <h3>更新依頼ダッシュボード</h3>
+          <p>公開後の更新を、文章と画像を添えて依頼・確認できる画面です（サンプル）。</p>
+          <div class="links"><span class="btn p">画面を開く</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="design">
+  <div class="inner">
+    <div class="sec-head"><h2>デザインカンプ（実際に動くHTML）</h2><span class="en">DESIGN MOCKUPS</span></div>
+    <p class="dgroup"><span class="en">STANDARD</span>通常のデザイン案</p>
+    <div class="grid">
+      <a class="card" href="サンモニター_デザイン案A.html" target="_blank">
+        <div class="ph"><span class="badge" style="background:#f7701b">デザイン案A</span><img src="shots/A_fv_pc.png" alt="デザイン案A ファーストビュー"></div>
+        <div class="tx">
+          <h3>デザイン案A｜実機写真のカタログ型</h3>
+          <p>実機写真を主役にした、白基調のシンプルなカタログ型。製品データベースのデモ付き。</p>
+          <div class="links"><span class="btn p">カンプを開く（PC/SP対応）</span></div>
+        </div>
+      </a>
+      <a class="card" href="サンモニター_デザイン案B.html" target="_blank">
+        <div class="ph"><span class="badge" style="background:#1e5b41">デザイン案B</span><img src="shots/B_fv_pc.png" alt="デザイン案B ファーストビュー"></div>
+        <div class="tx">
+          <h3>デザイン案B｜シンプル・製品主役</h3>
+          <p>左に固定したメニューで、製品・用途・ご相談へ迷わず進める構成。</p>
+          <div class="links"><span class="btn p">カンプを開く（PC/SP対応）</span></div>
+        </div>
+      </a>
+    </div>
+    <p class="dgroup" style="margin-top:34px;"><span class="en">ILLUSTRATION</span>イラスト案</p>
+    <div class="grid">
+      <a class="card" href="サンモニター_デザイン案C.html" target="_blank">
+        <div class="ph"><span class="badge" style="background:#333">デザイン案C</span><img src="shots/C_fv_pc.png" alt="デザイン案C ファーストビュー"></div>
+        <div class="tx">
+          <h3>デザイン案C｜アイソメトリック</h3>
+          <p>検査機器が活躍する街を、人やラインが動くイラストで描いたデザイン。</p>
+          <div class="links"><span class="btn p">カンプを開く（PC/SP対応）</span></div>
+        </div>
+      </a>
+      <a class="card" href="サンモニター_デザイン案D.html" target="_blank">
+        <div class="ph"><span class="badge" style="background:#0068B7">デザイン案D</span><img src="shots/D_fv_pc.png" alt="デザイン案D ファーストビュー"></div>
+        <div class="tx">
+          <h3>デザイン案D｜立体イラスト</h3>
+          <p>現行サイトの言葉「安心と安全」を見出しに、立体イラストで見せるデザイン。</p>
+          <div class="links"><span class="btn p">カンプを開く（PC/SP対応）</span></div>
+        </div>
+      </a>
+    </div>
+    <p class="dgroup" style="margin-top:34px;"><span class="en">DATABASE</span>製品データベースのデモ（デザイン案Aに組み込み・実際に操作できます）</p>
+    <div class="grid">
+      <a class="card" href="サンモニター_デザイン案A_製品一覧.html" target="_blank">
+        <div class="ph"><span class="badge" style="background:#0068B7">製品データベース</span><img src="shots/db_list_pc.png" alt="製品一覧・絞り込み検索"></div>
+        <div class="tx">
+          <h3>製品一覧・絞り込み検索（全86機種）</h3>
+          <p>現行サイトの86製品をデータ化。カテゴリ・用途・レンタル／販売で絞り込めます。</p>
+          <div class="links"><span class="btn p">一覧を開く（PC/SP対応）</span></div>
+        </div>
+      </a>
+      <a class="card" href="サンモニター_デザイン案A_製品詳細.html?id=x-ray3720s2" target="_blank">
+        <div class="ph"><span class="badge" style="background:#0068B7">製品データベース</span><img src="shots/db_detail_pc.png" alt="製品詳細"></div>
+        <div class="tx">
+          <h3>製品詳細（データから自動で作成）</h3>
+          <p>仕様表や関連製品を、登録したデータから自動で表示します。</p>
+          <div class="links"><span class="btn p">製品詳細を開く</span></div>
+        </div>
+      </a>
+      <a class="card" href="サンモニター_デザイン案A_見積依頼.html?id=x-ray3720s2,x-ray7140s" target="_blank">
+        <div class="ph"><span class="badge" style="background:#0068B7">製品データベース</span><img src="shots/db_quote_pc.png" alt="見積依頼"></div>
+        <div class="tx">
+          <h3>見積依頼（型番を自動で引き継ぎ）</h3>
+          <p>選んだ機種の型番が、見積依頼フォームにそのまま入ります（送信はされません）。</p>
+          <div class="links"><span class="btn p">見積依頼を開く</span></div>
+        </div>
+      </a>
+    </div>
+    <p style="margin-top:14px;font-size:12px;color:#9aa3b0;">※ 製品データは現行サイト掲載の86製品から作成。カテゴリ・用途の分け方や比較表・見積リストは画面の一例で、実装範囲は要件定義で確定します。</p>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <div class="sec-head"><h2>設計資料</h2><span class="en">SITE STRUCTURE</span></div>
+    <div class="grid g2 struct">
+      <div class="card">
+        <div class="ph"><span class="badge">サイトマップ</span><img src="shots/sitemap_top.png" alt="想定サイトマップ"></div>
+        <div class="tx">
+          <h3>リニューアル後 想定サイトマップ（案）</h3>
+          <p>現行約300ページを整理し、3クリック以内で目的の情報に届く構成にした案です。</p>
+          <div class="links">
+            <a class="btn p" href="サンモニター_サイトマップ.html" target="_blank">サイトマップを開く（HTML）</a>
+            <a class="btn o" href="サンモニター様_想定サイトマップ.pdf" target="_blank">PDF版（A4横・7ページ）</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><span class="badge">ワイヤーフレーム</span><img src="shots/wf_top.png" alt="ワイヤーフレーム"></div>
+        <div class="tx">
+          <h3>主要ページ ワイヤーフレーム（案）</h3>
+          <p>トップ・製品一覧・製品詳細など主要5画面の構成案です。</p>
+          <div class="links">
+            <a class="btn p" href="サンモニター_ワイヤーフレーム.html" target="_blank">ワイヤーフレームを開く（HTML）</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g2 struct" style="margin-top:20px;">
+      <div class="card" style="grid-column:1 / -1;">
+        <div class="tx" style="padding:22px 24px;">
+          <h3 style="margin-bottom:10px;">提案依頼書「提案時の提出物」との対応</h3>
+          <p style="font-size:12px;color:#6b7280;margin:0 0 14px;line-height:1.9;">
+            2026年9月10日にご連絡いただいた変更（デザイン案・サイトマップ・CMS選定理由・SEO方針は提案段階で必須としない）を反映しています。
+            弊社は<b>4項目とも具体案をご提示</b>したうえで、あわせて<b>その決定プロセス</b>も御提案書でご説明しています。</p>
+          <table class="map">
+            <tr><th>提案依頼書のご要件</th><th style="width:88px;">区分</th><th>対応資料</th></tr>
+            <tr><td>提案資料</td><td>必須</td><td class="st">✔ 御提案書（PDF・22ページ）</td></tr>
+            <tr><td>デザイン案（PC・スマホ）</td><td>任意<small style="display:block;color:#9aa3b0;">9/10変更</small></td><td class="st">✔ 通常のデザイン案A・B／イラスト案C・D（いずれも動くHTML・PC/SP）＋御提案書P8〜P12</td></tr>
+            <tr><td>サイトマップ</td><td>任意<small style="display:block;color:#9aa3b0;">9/10変更</small></td><td class="st">✔ 想定サイトマップ（HTML／PDF・7ページ）＋主要ページのワイヤーフレーム＋御提案書P7</td></tr>
+            <tr><td>CMS選定理由</td><td>任意<small style="display:block;color:#9aa3b0;">9/10変更</small></td><td class="st">✔ 御提案書P13「製品データベースと製品の探し方」・P14「製品データベースのデモ」（デザイン案Aで実際に操作可）・P15「CMS選定理由（WordPress）」（決定の考え方を明記）</td></tr>
+            <tr><td>SEO方針</td><td>任意<small style="display:block;color:#9aa3b0;">9/10変更</small></td><td class="st">✔ 御提案書P16「SEO・AIO方針」（策定プロセス＋構造化データ／301リダイレクト／既存評価の維持）</td></tr>
+            <tr><td>プロジェクト体制</td><td>必須</td><td class="st">✔ 御提案書P18「実施体制」＋追加資料P11「実施体制図」</td></tr>
+            <tr><td>スケジュール</td><td>必須</td><td class="st">✔ 御提案書P19「スケジュール（2027年5月公開）」・P20「移行計画」＋プロジェクトの進め方（23ページ）</td></tr>
+            <tr><td>見積書（詳細内訳）</td><td>必須</td><td class="pd">別途ご提示（全項目明細）</td></tr>
+            <tr><td>保守・運用プラン</td><td>必須</td><td class="st">✔ 御提案書P17「保守・運用プラン」＋運用サポート体制のご説明（23ページ）＋ご連絡方法と更新代行のご案内（12ページ）</td></tr>
+            <tr><td>類似実績</td><td>必須</td><td class="st">✔ 御提案書P21「類似実績」（製品データベースを持つ製造業サイト2件を詳しく掲載）・P22「会社概要」＋追加資料P13〜P22（会社概要・構築実績）</td></tr>
+          </table>
+          <h3 style="margin:26px 0 10px;">変更にともなうご説明事項への対応</h3>
+          <table class="map">
+            <tr><th>ご提示をお願いされた点</th><th>対応資料</th></tr>
+            <tr><td>どのようなプロセスで要件定義やデザイン制作を行うか</td><td class="st">✔ 御提案書P8「デザイン制作のプロセス」・P18「実施体制」・P19「進行管理について」＋プロジェクトの進め方「進め方編」</td></tr>
+            <tr><td>CMSやサイト構成をどのような考え方で決定するか</td><td class="st">✔ 御提案書P15「決定の考え方」（8基準で比較）</td></tr>
+            <tr><td>SEO方針をどのように策定するか</td><td class="st">✔ 御提案書P16「SEO方針の策定プロセス」（現状分析→キーワード設計→実装→計測・改善）</td></tr>
+            <tr><td>プロジェクト成功のために重視している点</td><td class="st">✔ 御提案書P3「プロジェクト成功のために重視している点」</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      ※ 想定サイトマップ・ワイヤーフレームの製品件数は、貴社ご回答（約85製品）を反映しています。<br>
+      ※ ご回答を踏まえ、<b>Webサーバーは貴社名義でのご契約・ご管理</b>を前提とし、WordPress稼働に必要な推奨環境（PHP 8.x／SFTP・SSH／WAF／日次バックアップ／ステージング）をご提案する形で設計しています。メールは Microsoft 365 のままで、移行は発生いたしません。<br>
+      ※ <b>/lp/ 配下の単独LPはリニューアル対象外</b>として、サイトマップ・御見積りの範囲から除外しています。<br>
+      ※ 製品情報は、弊社が現行サイトから抽出した一覧に、レンタル可否・販売可否・用途等を貴社にご追記いただく進め方を想定しています。<br>
+      ※ デザインカンプ内の文言・写真の一部はイメージです（メインビジュアル等は制作イメージ、実制作時は実素材・ご提供素材で置き換えます）。<br>
+      ※ 御見積書は本ページには掲載せず、別途ご提示いたします。
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <span>株式会社サンモニター様 WEBサイトリニューアル ご提案一覧</span>
+    <span>© infoNet inc. All Rights Reserved.　CONFIDENTIAL</span>
+  </div>
+</footer>
+
+</body>
+</html>

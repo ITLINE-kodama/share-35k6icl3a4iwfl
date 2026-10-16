@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>デザイン案C｜アイソメトリック ― 株式会社サンモニター（検査・セキュリティ機器のレンタル・販売）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   デザイン案C｜アイソメトリック（2026-10-15）
+   タイポグラフィ・文字サイズ・余白は参考サイトの実測値に準拠（_参考サイト分析.md）
+   本文 游ゴシックMedium 16px/28px #333・英字 Lexend・見出し32px/48px
+   セクション padding 120px 80px 120px 320px（左に浮いたサイドナビ264px）・内側960px
+   ========================================================= */
+:root{
+  --ink:#333; --sub:#a0a0a0; --line:#e5e5e5; --line2:#d2d2d2; --gray:#f7f7f7; --mv:#eef0f2;
+  --amber:#F2A900; --amber-l:#FFF4D6; --dark:#333;
+  --ff:"Original Yu Gothic","Yu Gothic Medium","游ゴシック Medium",YuGothic,"游ゴシック体","Hiragino Kaku Gothic ProN","ヒラギノ角ゴ ProN W3",Meiryo,sans-serif;
+  --en:"Lexend",Arial,sans-serif;
+  --shadow:0 8px 30px rgba(51,51,51,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);font-weight:500;font-size:16px;line-height:28px;color:var(--ink);background:#fff;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+ul{list-style:none}
+.en{font-family:var(--en)}
+
+/* ---- 案ラベル ---- */
+.planbar{position:absolute;z-index:30;right:16px;top:16px;background:var(--dark);color:#fff;font-size:12px;line-height:1;padding:9px 14px;border-radius:999px;letter-spacing:.04em}
+.planbar b{color:var(--amber);margin-right:6px}
+
+/* ---- 左の浮いたサイドナビ（幅264・内側232・角丸16） ---- */
+.side{position:fixed;z-index:60;left:0;top:0;width:264px;padding:16px 16px 0}
+.side__card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(51,51,51,.08)}
+.side__logo{display:flex;flex-direction:column;align-items:center;padding:30px 20px 14px}
+.side__logo img{width:150px;height:auto}
+.side__nav{padding:0 16px}
+.side__nav li{border-bottom:1px solid var(--line)}
+.side__nav li:last-child{border-bottom:0}
+.side__nav a{display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:700;line-height:21px;padding:16px 16px}
+.side__nav a::after{content:"";width:6px;height:6px;border-top:1.5px solid #888;border-right:1.5px solid #888;transform:rotate(45deg);margin-right:4px}
+.side__nav a:hover{color:#000}
+.side__nav a:hover::after{border-color:var(--amber)}
+.side__btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:14px 24px 24px;border:1px solid var(--ink);border-radius:20px;font-size:13px;font-weight:700;line-height:13px;padding:13px 10px;transition:background .2s,color .2s}
+.side__btn:hover{background:var(--ink);color:#fff}
+.side__btn svg{width:15px;height:15px}
+.side__dark{background:var(--dark);color:#fff;text-align:center;padding:22px 18px 24px}
+.side__dark p{font-size:14px;font-weight:700;line-height:21px}
+.side__dark .tel{display:block;font-family:var(--en);font-size:22px;font-weight:600;letter-spacing:.02em;margin-top:8px;line-height:1.2}
+.side__dark small{display:block;font-size:11px;color:#bbb;margin-top:4px;line-height:1.5}
+.side__dark .cta{display:block;margin-top:14px;background:var(--amber);color:#333;border-radius:4px;font-size:14px;font-weight:700;line-height:14px;padding:16px 10px}
+.side__dark .cta:hover{background:#ffbe1a}
+.sphead{display:none}
+.spnav{display:none}
+
+/* ---- 右の固定タブ（よくあるご質問） ---- */
+.faqtab{position:fixed;z-index:55;right:0;top:50%;transform:translateY(-10%);background:var(--amber);color:#333;writing-mode:vertical-rl;font-size:14px;font-weight:700;letter-spacing:.12em;padding:22px 12px;border-radius:8px 0 0 8px;box-shadow:var(--shadow)}
+
+/* ---- メインビジュアル（アイソメトリックの街） ---- */
+.mv{position:relative;height:min(780px,100vh);min-height:640px;overflow:hidden;background:var(--mv)}
+.mv{background:#e7ebf1}
+.mv__img,.mv__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center}
+.mv__img{background:url(images/c/iso_mv3_poster.jpg) no-repeat right center/cover}
+.mv__video{opacity:0;transition:opacity .8s ease}
+.mv__video.on{opacity:1}
+.mv__txt{position:absolute;z-index:2;left:312px;top:88px;max-width:640px}
+.mv__en{font-family:var(--en);font-weight:700;font-size:72px;line-height:1.1;letter-spacing:-.015em;color:var(--ink)}
+.mv__sub{font-size:18px;font-weight:700;line-height:27px;margin-top:24px}
+.mv__chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.mv__chips span{display:inline-flex;align-items:center;gap:6px;background:#fff;border-radius:20px;font-size:13px;font-weight:700;line-height:13px;padding:10px 16px;box-shadow:var(--shadow)}
+.mv__chips span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--amber)}
+.mv__note{position:absolute;z-index:2;right:24px;bottom:16px;font-size:11px;line-height:1;color:#888}
+
+/* ---- セクション（120 80 120 320 / 内側960） ---- */
+.sec{padding:120px 80px 120px 320px}
+.sec.gray{background:var(--gray)}
+.sec.split{background:linear-gradient(#fff 0,#fff 300px,var(--gray) 300px)}
+.inner{max-width:960px;margin:0 auto}
+.inner.narrow{max-width:840px}
+.sh{text-align:center;margin-bottom:56px}
+.sh .en{display:block;font-size:16px;font-weight:600;line-height:24px;color:var(--sub);margin-bottom:8px;letter-spacing:.02em}
+.sh h2{font-size:32px;font-weight:700;line-height:48px}
+.bar{position:relative;font-size:24px;font-weight:700;line-height:36px;padding-left:20px;margin:0 0 40px}
+.bar::before{content:"";position:absolute;left:0;top:6px;width:4px;height:24px;border-radius:2px;background:var(--amber)}
+.bar.mt{margin-top:80px}
+.lead{font-size:14px;line-height:21px;margin:-24px 0 32px}
+
+/* カード（白・角丸8・影） */
+.cards{display:grid;gap:24px;margin-bottom:32px}
+.c3{grid-template-columns:repeat(3,1fr)}
+.c4{grid-template-columns:repeat(4,1fr);gap:16px}
+.card{display:flex;flex-direction:column;align-items:center;background:#fff;border-radius:8px;box-shadow:var(--shadow);padding:24px 20px 28px;text-align:center;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(51,51,51,.1)}
+.card img{width:100%;max-width:240px;aspect-ratio:4/3;object-fit:contain}
+.card h4{font-size:18px;font-weight:700;line-height:31.5px;margin-top:10px}
+.card p{font-size:14px;line-height:21px;color:#555;margin-top:6px;text-align:left}
+.card.wide img{max-width:340px}
+.c2l{grid-template-columns:1.1fr 1fr}
+.stack{display:grid;grid-template-rows:1fr 1fr;gap:24px}
+.card.photo{display:grid;grid-template-columns:46% 1fr;padding:0;align-items:stretch;overflow:hidden;text-align:left}
+.card.photo .ph{display:block;overflow:hidden;background:#eee}
+.card.photo .ph img{width:100%;height:100%;max-width:none;aspect-ratio:auto;object-fit:cover;transition:transform .5s}
+.card.photo:hover .ph img{transform:scale(1.05)}
+.card.photo .tx{display:flex;flex-direction:column;justify-content:center;padding:20px 22px}
+.card.photo h4{font-size:17px;line-height:26px;margin:0}
+.card.photo p{margin-top:8px}
+.card.sm{padding:20px 14px 22px}
+.card.sm img{max-width:150px;aspect-ratio:1;mix-blend-mode:multiply}
+.card.sm h4{font-size:14px;line-height:21px;margin-top:8px}
+.card.sm small{display:block;font-family:var(--en);font-size:12px;color:var(--sub);line-height:18px}
+.arw{display:flex;justify-content:flex-end;align-items:center;gap:10px;font-size:16px;font-weight:700;line-height:24px}
+.arw::after{content:"";width:24px;height:24px;border-radius:50%;background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.6'%3E%3Cpath d='m10 7 5 5-5 5'/%3E%3C/svg%3E") center/14px no-repeat}
+.txtblock{margin-top:8px}
+.txtblock h4{font-size:20px;font-weight:700;line-height:30px;margin-bottom:16px}
+.txtblock p{font-size:14px;line-height:21px;margin-bottom:16px}
+
+/* ダークのピルボタン */
+.btns{display:flex;justify-content:center;gap:40px;margin-top:64px}
+.pill{position:relative;display:flex;align-items:center;justify-content:center;width:320px;height:56px;border-radius:28px;background:var(--dark);color:#fff;font-size:16px;font-weight:700;transition:background .2s}
+.pill::after{content:"";position:absolute;right:26px;width:7px;height:7px;border-top:2px solid #fff;border-right:2px solid #fff;transform:rotate(45deg)}
+.pill:hover{background:#000}
+
+/* 導入事例・技術コラム（3列） */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.post .ph{display:block;aspect-ratio:304/180;overflow:hidden;border-radius:4px;background:#ddd}
+.post .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.post:hover .ph img{transform:scale(1.05)}
+.post .meta{display:flex;align-items:center;gap:10px;margin-top:18px}
+.post .meta time{font-family:var(--en);font-size:14px;color:var(--sub)}
+.post .meta span{font-size:12px;line-height:18px;border:1px solid var(--line2);border-radius:2px;padding:1px 8px;background:#fff}
+.post h3{font-size:18px;font-weight:700;line-height:27px;margin-top:10px}
+
+/* お知らせ（左に見出し・右に一覧） */
+.news{display:flex;gap:0}
+.news__head{flex:0 0 160px}
+.news__head .en{display:block;font-size:16px;font-weight:600;color:var(--sub);line-height:24px}
+.news__head h2{font-size:28px;font-weight:700;line-height:40px}
+.news ul{flex:1;border-top:1px solid var(--line)}
+.news li a{display:flex;padding:32px 16px;border-bottom:1px solid var(--line);transition:background .2s}
+.news li a:hover{background:#fafafa}
+.news time{flex:0 0 120px;font-family:var(--en);color:var(--sub);font-weight:400}
+
+/* 強み（暗い写真帯＋白い円） */
+.strength{position:relative;padding:120px 80px 0 320px;color:#fff}
+.strength__bg{position:absolute;left:0;right:0;top:0;height:560px;background:#3b3b3b url(images/c/r_install2.jpg) center/cover;filter:none}
+.strength__bg::after{content:"";position:absolute;inset:0;background:rgba(30,30,30,.72);backdrop-filter:blur(6px)}
+.strength .inner{position:relative;z-index:1}
+.strength .sh .en{color:#d2d2d2}
+.strength .sh{margin-bottom:24px}
+.strength .desc{text-align:center;font-size:16px;line-height:28px;margin-bottom:56px}
+.circles{display:flex;justify-content:space-between;gap:24px}
+.circle{flex:0 0 304px;height:304px;border-radius:50%;background:#fff;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+.circle svg{width:44px;height:44px;margin-bottom:12px}
+.circle .lb{font-size:18px;font-weight:700;line-height:27px;background:linear-gradient(transparent 62%,var(--amber-l) 62%);padding:0 4px}
+.circle .big{font-size:44px;font-weight:700;line-height:1.3;margin-top:8px;letter-spacing:.02em}
+.circle .big small{font-size:18px;margin:0 2px}
+.notes{font-size:12px;line-height:18px;color:#666;margin-top:28px}
+
+/* 横線見出し */
+.lh{display:flex;align-items:center;gap:24px;font-size:24px;font-weight:700;line-height:36px;margin:96px 0 56px}
+.lh::before,.lh::after{content:"";flex:1;height:1px;background:var(--line2)}
+.reasons{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.reasons h4{text-align:center;font-size:20px;font-weight:700;line-height:30px;margin-bottom:24px}
+.rounds{display:flex;justify-content:space-between}
+.round{width:132px;text-align:center}
+.round img{width:132px;height:132px;border-radius:50%;object-fit:cover}
+.round p{font-size:14px;font-weight:700;line-height:21px;margin-top:14px}
+
+/* サンプルテスト（2列カード） */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.two a{display:block}
+.two .ph{display:block;aspect-ratio:400/240;border-radius:8px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.two .ph img{width:100%;height:100%;object-fit:contain;transition:transform .5s}
+.two a:hover .ph img{transform:scale(1.04)}
+.two h3{font-size:20px;font-weight:700;line-height:30px;margin:24px 0 10px}
+.two p{font-size:14px;line-height:21px;color:#555}
+
+/* お問い合わせ（3セル） */
+.contact{padding:96px 80px 120px 320px}
+.cells{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line2)}
+.cells a{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:48px 24px 56px;border-right:1px solid var(--line2);transition:background .2s}
+.cells a:last-child{border-right:0}
+.cells a:hover{background:#fafafa}
+.cells .ic{width:40px;height:40px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+.cells .ic svg{width:20px;height:20px}
+.cells small{font-size:13px;color:#777;line-height:20px}
+.cells strong{font-size:24px;font-weight:700;line-height:36px;margin-top:4px}
+.cells .tel{font-family:var(--en);font-size:26px;font-weight:600}
+.cells p{font-size:14px;line-height:21px;color:#555;margin-top:18px}
+
+/* フッター（#333・上120） */
+.ft{background:var(--dark);color:#fff;padding:120px 80px 72px 80px}
+.ft__logo{display:flex;justify-content:center;align-items:center;gap:16px;margin-bottom:64px}
+.ft__logo img{height:64px;width:auto;filter:brightness(0) invert(1)}
+.ft__cols{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.ft__cols h5{font-size:16px;font-weight:700;line-height:24px;margin-bottom:20px}
+.ft__cols a{display:block;font-size:14px;line-height:21px;color:#d2d2d2;margin-bottom:12px}
+.ft__cols a:hover{color:#fff}
+.ft__co{font-size:14px;line-height:24px;color:#d2d2d2}
+.ft__bottom{background:#fff;color:#333;padding:28px 80px 40px;text-align:center}
+.ft__bottom nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 40px;font-size:12px;line-height:18px;margin-bottom:24px}
+.ft__bottom small{font-size:11px;color:#888}
+.ft__note{max-width:960px;margin:22px auto 0;font-size:11px;line-height:1.8;color:#888;text-align:left}
+
+.spbar{display:none}
+
+/* スクロール表示 */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* =================== レスポンシブ =================== */
+@media (max-width:1240px){
+  .mv__en{font-size:60px}
+  .circle{flex-basis:30%;height:auto;aspect-ratio:1}
+  .circle .big{font-size:36px}
+  .round{width:110px}.round img{width:110px;height:110px}
+}
+@media (max-width:1100px){
+  .sec,.contact{padding-left:300px;padding-right:40px}
+  .strength{padding-left:300px;padding-right:40px}
+  .mv__txt{left:296px}
+}
+@media (max-width:960px){
+  .planbar{top:auto;bottom:auto;top:64px;right:10px;font-size:11px;padding:7px 11px}
+  .side{display:none}
+  .faqtab{display:none}
+  .sphead{display:flex;position:sticky;top:0;z-index:70;height:60px;background:#fff;align-items:center;justify-content:space-between;padding:0 8px 0 16px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+  .sphead img{height:32px;width:auto}
+  .sphead button{width:48px;height:48px;border:0;background:none;display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .sphead button span,.sphead button span::before,.sphead button span::after{display:block;width:22px;height:2px;background:#333;position:relative;content:"";transition:.2s}
+  .sphead button span::before{position:absolute;top:-7px}.sphead button span::after{position:absolute;top:7px}
+  .spnav{display:block;position:fixed;z-index:69;inset:60px 0 0 0;background:#fff;overflow:auto;padding:8px 20px 100px;transform:translateY(-110%);transition:transform .3s}
+  .spnav.op{transform:none}
+  .spnav a{display:flex;justify-content:space-between;font-size:15px;font-weight:700;padding:18px 4px;border-bottom:1px solid var(--line)}
+  .spnav .dark{margin-top:20px;background:var(--dark);color:#fff;border-radius:12px;padding:20px;text-align:center}
+  .spnav .dark .tel{font-family:var(--en);font-size:24px;font-weight:600;display:block;margin-top:6px}
+  .mv{height:640px;min-height:0}
+  .mv{background:#e0e4ee}
+  .mv__img{background-size:auto 64%;background-position:64% bottom}
+  .mv__video{top:auto;height:64%;object-position:64% bottom}
+    .mv__txt{left:20px;right:20px;top:36px}
+  .mv__en{font-size:40px}
+  .mv__sub{font-size:15px;line-height:24px;margin-top:14px}
+  .mv__chips{margin-top:16px}
+  .mv__chips span{font-size:12px;padding:8px 12px}
+  .sec,.contact{padding:64px 20px}
+  .sec.split{background:linear-gradient(#fff 0,#fff 200px,var(--gray) 200px)}
+  .sh{margin-bottom:36px}
+  .sh h2{font-size:24px;line-height:36px}
+  .sh .en{font-size:13px}
+  .bar{font-size:19px;line-height:28px;margin-bottom:24px}
+  .bar.mt{margin-top:48px}
+  .lead{margin:-12px 0 20px}
+  .c3,.c2l{grid-template-columns:1fr}
+  .card.photo{grid-template-columns:1fr}
+  .card.photo .ph{aspect-ratio:16/10}
+  .c4{grid-template-columns:repeat(2,1fr);gap:12px}
+  .btns{flex-direction:column;align-items:center;gap:16px;margin-top:40px}
+  .pill{width:100%;max-width:320px}
+  .posts{grid-template-columns:1fr;gap:32px}
+  .news{flex-direction:column}
+  .news__head{flex:none;margin-bottom:20px}
+  .news li a{flex-direction:column;padding:20px 4px}
+  .news time{flex:none}
+  .strength{padding:64px 20px 0}
+  .strength .sh h2{font-size:21px;line-height:32px}
+  .strength .desc br{display:none}
+  .round p br{display:none}
+  .strength__bg{height:480px}
+  .circles{flex-direction:column;align-items:center;gap:16px}
+  .circle{flex:none;width:240px;height:240px}
+  .circle .big{font-size:34px}
+  .lh{font-size:19px;margin:56px 0 32px;gap:14px}
+  .reasons{grid-template-columns:1fr;gap:40px}
+  .round{width:30%}.round img{width:100%;height:auto;aspect-ratio:1}
+  .round p{font-size:12px;line-height:18px}
+  .two{grid-template-columns:1fr;gap:32px}
+  .cells{grid-template-columns:1fr}
+  .cells a{border-right:0;border-bottom:1px solid var(--line2);padding:32px 20px 36px}
+  .cells a:last-child{border-bottom:0}
+  .ft{padding:72px 20px 48px}
+  .ft__logo{margin-bottom:40px}
+  .ft__cols{grid-template-columns:1fr 1fr;gap:24px}
+  .ft__bottom{padding:24px 20px 90px}
+  .ft__bottom nav{gap:10px 20px}
+  .spbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:75;height:56px;box-shadow:0 -2px 10px rgba(0,0,0,.12)}
+  .spbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:700}
+  .spbar .t{background:#fff;color:#333}
+  .spbar .e{background:var(--amber);color:#333}
+  .spbar svg{width:18px;height:18px}
+}
+</style>
+</head>
+<body>
+
+<div class="planbar"><b>デザイン案C</b>アイソメトリック</div>
+
+<!-- ===== 左の浮いたサイドナビ ===== -->
+<header class="side">
+  <div class="side__card">
+    <a class="side__logo" href="#top"><img src="images/logo_sunmonitor_full.png" alt="株式会社サンモニター"></a>
+    <ul class="side__nav">
+      <li><a href="#service">製品情報</a></li>
+      <li><a href="#service">課題・用途から探す</a></li>
+      <li><a href="#flow">レンタルについて</a></li>
+      <li><a href="#column">導入事例</a></li>
+      <li><a href="#column">技術・サポート</a></li>
+      <li><a href="#footer">会社案内</a></li>
+    </ul>
+    <a class="side__btn" href="#service"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>製品を探す・絞り込む</a>
+    <div class="side__dark">
+      <p>お急ぎの方はお電話で</p>
+      <a class="tel" href="tel:0339310521">03-3931-0521</a>
+      <a class="cta" href="#contact">見積依頼・お問い合わせ</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== スマホ用ヘッダー ===== -->
+<div class="sphead">
+  <a href="#top"><img src="images/logo_sunmonitor_full.png" alt="株式会社サンモニター"></a>
+  <button type="button" aria-label="メニュー" aria-expanded="false"><span></span></button>
+</div>
+<nav class="spnav" aria-label="メニュー">
+  <a href="#service">製品情報</a><a href="#service">課題・用途から探す</a><a href="#flow">レンタルについて</a><a href="#column">導入事例</a><a href="#column">技術・サポート</a><a href="#footer">会社案内</a>
+  <div class="dark">お急ぎの方はお電話で<a class="tel" href="tel:0339310521">03-3931-0521</a></div>
+</nav>
+
+<a class="faqtab" href="#faq">よくあるご質問</a>
+
+<main id="top">
+
+<!-- ===== メインビジュアル ===== -->
+<section class="mv" aria-label="メインビジュアル">
+  <div class="mv__img" role="img" aria-label="食品工場・イベント会場・港湾など、検査機器が活躍する街のイラスト"></div>
+  <video class="mv__video" src="images/c/iso_mv3.mp4" poster="images/c/iso_mv3_poster.jpg" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
+  <div class="mv__txt">
+    <p class="mv__en">Detect it.<br>Right on site.</p>
+    <h1 class="mv__sub">異物・危険物を、現場で見逃さないために。<br>検査機器のレンタルと、技術者による設置まで。</h1>
+    <div class="mv__chips"><span>サンプルテストの結果がその場でわかる</span><span>最短翌日レンタル可能</span><span>全国対応</span></div>
+  </div>
+  <span class="mv__note">※イラストはイメージです</span>
+</section>
+
+<!-- ===== 課題・用途から探す ===== -->
+<section class="sec split" id="service">
+  <div class="inner">
+    <div class="sh rv"><span class="en">SOLUTION</span><h2>課題・用途から探す</h2></div>
+
+    <h3 class="bar rv">製品の品質と安全を守りたい</h3>
+    <div class="cards c3 rv">
+      <a class="card" href="#service"><img src="images/c/iso_food.jpg" alt=""><h4>食品工場の異物混入対策</h4><p>既設の検査機で取れない異物が出たときに。検体・包材に合わせて、感度の高い機種をレンタルでご用意します。</p></a>
+      <a class="card" href="#service"><img src="images/c/iso_apparel.jpg" alt=""><h4>アパレル・繊維の検針</h4><p>縫製工程の折れ針・鉄片対策に。検体に合わせて検針機を選定し、出荷前検査の体制づくりをお手伝いします。</p></a>
+      <a class="card" href="#sample"><img src="images/c/iso_sample.jpg" alt=""><h4>まずサンプルテスト</h4><p>実際の検体で、どの機種でどこまで検出できるかを確認。結果はその場でわかります。</p></a>
+    </div>
+
+    <h3 class="bar mt rv">入場時の安全を確保したい</h3>
+    <div class="cards c2l rv">
+      <a class="card wide" href="#service"><img src="images/c/iso_event.jpg" alt=""><h4>イベント・展示会の手荷物検査</h4><p>入場ゲートでの金属探知と手荷物のX線検査に。開催期間・来場者数に合わせて台数をご用意します。</p></a>
+      <div class="stack">
+        <a class="card photo" href="#service"><span class="ph"><img src="images/c/r_event2.jpg" alt="屋外催事の入場ゲート"></span><span class="tx"><h4>屋外催事の入場ゲート</h4><p>テント下の仮設入場口にも、ゲート式金属探知機を設置します。</p></span></a>
+        <a class="card photo" href="#service"><span class="ph"><img src="images/c/r_cruise_l.jpg" alt="客船の保安検査"></span><span class="tx"><h4>空港・港湾・客船の保安検査</h4><p>入出国時の手荷物検査に、X線検査機とゲートをご用意します。</p></span></a>
+      </div>
+    </div>
+
+    <h3 class="bar mt rv">機種から選びたい</h3>
+    <div class="cards c4 rv">
+      <a class="card sm" href="#service"><img src="images/c/p_bmd3560n3.webp" alt=""><h4>金属探知機</h4><small>BMD-3560NⅢ</small></a>
+      <a class="card sm" href="#service"><img src="images/c/p_xray7040s.webp" alt=""><h4>X線検査機</h4><small>X-Ray7040S</small></a>
+      <a class="card sm" href="#service"><img src="images/c/p_bmdf3060.webp" alt=""><h4>検針機</h4><small>BMD-F3060NⅢ</small></a>
+      <a class="card sm" href="#service"><img src="images/c/p_mscope.webp" alt=""><h4>セキュリティゲート</h4><small>M-Scope</small></a>
+    </div>
+    <div class="txtblock rv">
+      <h4>技術者が設置から回収まで行います</h4>
+      <p>検査機は、置くのみでは狙った異物を検出できません。技術者が現地へ伺い、検体・包材・ラインの速度に合わせて感度を調整し、期間終了後の回収まで一貫して行います。</p>
+      <a class="arw" href="#flow">レンタルの流れを見る</a>
+    </div>
+    <div class="btns rv"><a class="pill" href="#service">製品一覧・絞り込み検索</a></div>
+  </div>
+</section>
+
+<!-- ===== 導入事例・技術コラム ===== -->
+<section class="sec" id="column">
+  <div class="inner">
+    <div class="sh rv"><span class="en">CASE &amp; COLUMN</span><h2>導入事例・技術コラム</h2></div>
+    <div class="posts rv">
+      <a class="post" href="#column"><span class="ph"><img src="images/c/r_soramame.jpg" alt="そら豆のX線画像"></span><div class="meta"><time>2025.07.10</time><span># X線検査機</span></div><h3>そら豆の検査例｜X線で見えるもの・見えないもの</h3></a>
+      <a class="post" href="#column"><span class="ph"><img src="images/c/r_event1.jpg" alt="屋外に並んだゲート式金属探知機"></span><div class="meta"><span># ゲート式金属探知機</span></div><h3>屋外催事の入場ゲートを、開催期間に合わせて設置</h3></a>
+      <a class="post" href="#column"><span class="ph"><img src="images/c/r_install1.jpg" alt="検査機の搬入作業"></span><div class="meta"><span># レンタル</span></div><h3>検査機の搬入から設定まで｜レンタル当日の流れ</h3></a>
+    </div>
+    <div class="btns rv"><a class="pill" href="#column">導入事例・コラム一覧</a></div>
+  </div>
+</section>
+
+<!-- ===== お知らせ ===== -->
+<section class="sec" style="padding-top:0">
+  <div class="inner">
+    <div class="news rv">
+      <div class="news__head"><span class="en">NEWS</span><h2>お知らせ</h2></div>
+      <ul>
+        <li><a href="#top"><time>2026.06.10</time><span>ペット用鹿肉ジャーキーを袋のまま検査しました（金属探知機・X線検査機）</span></a></li>
+        <li><a href="#top"><time>2026.02.17</time><span>化粧筆に混入した金属異物をX線検査機で可視化しました</span></a></li>
+        <li><a href="#top"><time>2025.10.31</time><span>食肉に混入した鉛弾をX線検査機で検出しました</span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 強み ===== -->
+<section class="strength" id="flow">
+  <div class="strength__bg"></div>
+  <div class="inner">
+    <div class="sh rv"><span class="en">STRENGTH</span><h2>検査機器を、<br>現場で使える状態でお届けする</h2></div>
+    <p class="desc rv">サンモニターは、金属探知機・X線検査機・検針機・セキュリティゲートのレンタル・販売を行っています。<br>機械をお届けして終わりではなく、技術者が現地で設置・設定・回収まで対応します。</p>
+    <div class="circles rv">
+      <div class="circle"><svg viewBox="0 0 48 48" fill="none" stroke="#333" stroke-width="2"><path d="M6 30h22V14H6zM28 20h8l6 6v4H28"/><circle cx="13" cy="34" r="3.5"/><circle cx="35" cy="34" r="3.5"/></svg><span class="lb">レンタル開始まで</span><span class="big">最短<small></small>翌日</span></div>
+      <div class="circle"><svg viewBox="0 0 48 48" fill="none" stroke="#333" stroke-width="2"><path d="M18 6h12M20 6v12L10 36a4 4 0 0 0 3.5 6h21A4 4 0 0 0 38 36L28 18V6"/><path d="M14 30h20"/></svg><span class="lb">サンプルテストの結果</span><span class="big">その場で</span></div>
+      <div class="circle"><svg viewBox="0 0 48 48" fill="none" stroke="#333" stroke-width="2"><path d="M24 42s-13-11-13-21a13 13 0 0 1 26 0c0 10-13 21-13 21z"/><circle cx="24" cy="21" r="4.5"/></svg><span class="lb">対応エリア</span><span class="big">全国</span></div>
+    </div>
+    <p class="notes" style="color:#666">※ 機種・検体・地域によっては、事前のサンプルテストや日程の調整をお願いする場合があります。</p>
+  </div>
+</section>
+
+<!-- ===== 選ばれる理由 ===== -->
+<section class="sec gray" style="padding-top:0;margin-top:-1px">
+  <div class="inner">
+    <h3 class="lh rv" style="margin-top:96px">サンモニターが選ばれる理由</h3>
+    <div class="reasons rv">
+      <div>
+        <h4>レンタルの強み</h4>
+        <div class="rounds">
+          <div class="round"><img src="images/c/r_install3.jpg" alt=""><p>自社で機材を保有し<br>手配が早い</p></div>
+          <div class="round"><img src="images/c/r_install2.jpg" alt=""><p>技術者が現地で<br>設置・設定</p></div>
+          <div class="round"><img src="images/c/r_install1.jpg" alt=""><p>期間終了後の<br>回収まで対応</p></div>
+        </div>
+      </div>
+      <div>
+        <h4>検査の専門性</h4>
+        <div class="rounds">
+          <div class="round"><img src="images/c/r_soramame.jpg" alt="" style="object-position:20% center"><p>検体に合わせて<br>機種を選定</p></div>
+          <div class="round"><img src="images/c/r_event1.jpg" alt=""><p>催事・港湾の<br>入場警備にも対応</p></div>
+          <div class="round"><img src="images/c/r_event2.jpg" alt=""><p>仮設の入場口にも<br>設置</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="btns rv"><a class="pill" href="#flow">レンタルについて</a><a class="pill" href="#footer">会社案内</a></div>
+  </div>
+</section>
+
+<!-- ===== サンプルテスト・レンタルの流れ ===== -->
+<section class="sec" id="sample">
+  <div class="inner narrow">
+    <div class="sh rv"><span class="en">SAMPLE TEST</span><h2>まずは、検出できるか試してください</h2></div>
+    <div class="two rv">
+      <a href="#contact"><span class="ph"><img src="images/c/iso_sample.jpg" alt=""></span><h3>サンプルテストのお申し込み</h3><p>持込・送付・オンラインの3つの方法から選べます。実際の検体で、どの機種でどこまで検出できるかを確認してから、レンタルをお決めいただけます。</p></a>
+      <a href="#flow"><span class="ph"><img src="images/c/iso_install.jpg" alt=""></span><h3>レンタルの流れ</h3><p>お問い合わせ → サンプルテスト → お見積り → 設置・設定 → 回収。技術者が現地へ伺い、設置から回収まで一貫して対応します。</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== よくあるご質問（簡易） ===== -->
+<section class="sec gray" id="faq" style="padding-top:96px;padding-bottom:96px">
+  <div class="inner narrow">
+    <div class="sh rv"><span class="en">FAQ</span><h2>よくあるご質問</h2></div>
+    <div class="news rv" style="display:block">
+      <ul style="background:#fff;border-radius:8px;border-top:0;box-shadow:var(--shadow)">
+        <li><a href="#faq" style="padding:24px 28px"><time style="flex:0 0 40px;color:var(--amber);font-weight:600">Q</time><span>最短でいつから使えますか。</span></a></li>
+        <li><a href="#faq" style="padding:24px 28px"><time style="flex:0 0 40px;color:var(--amber);font-weight:600">Q</time><span>遠方の工場や会場でも対応できますか。</span></a></li>
+        <li><a href="#faq" style="padding:24px 28px"><time style="flex:0 0 40px;color:var(--amber);font-weight:600">Q</time><span>サンプルテストはどのように行いますか。</span></a></li>
+        <li><a href="#faq" style="padding:24px 28px;border-bottom:0"><time style="flex:0 0 40px;color:var(--amber);font-weight:600">Q</time><span>レンタルではなく購入もできますか。</span></a></li>
+      </ul>
+    </div>
+    <div class="btns rv"><a class="pill" href="#faq">よくあるご質問の一覧</a></div>
+  </div>
+</section>
+
+<!-- ===== お問い合わせ（3セル） ===== -->
+<section class="contact" id="contact">
+  <div class="inner">
+    <div class="cells rv">
+      <a href="tel:0339310521"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg></span><small>お急ぎの方はお電話で</small><strong class="tel">03-3931-0521</strong><p>FAX 03-3931-0977</p></a>
+      <a href="#contact"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 16.5h7"/></svg></span><small>機種・期間・設置場所をお知らせください</small><strong>見積依頼</strong><p>製品ページから機種を引き継いで<br>お見積りをご依頼いただけます</p></a>
+      <a href="#sample"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/></svg></span><small>実際の検体で確かめたい方</small><strong>サンプルテスト</strong><p>持込・送付・オンラインから<br>お選びいただけます</p></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="footer">
+  <div class="ft">
+    <div class="ft__logo"><img src="images/logo_sunmonitor.svg" alt="株式会社サンモニター"></div>
+    <div class="ft__cols">
+      <div><h5>製品情報</h5><a href="#service">金属探知機</a><a href="#service">X線検査機</a><a href="#service">検針機</a><a href="#service">セキュリティゲート・手荷物検査機</a><a href="#service">製品検索・絞り込み</a></div>
+      <div><h5>課題・用途から探す</h5><a href="#service">食品工場の異物混入対策</a><a href="#service">イベント・施設の手荷物検査／警備</a><a href="#service">アパレル・繊維の検針</a><a href="#service">業界から探す</a></div>
+      <div><h5>レンタルについて</h5><a href="#flow">選ばれる理由</a><a href="#sample">レンタルの流れ</a><a href="#sample">サンプルテスト</a><a href="#column">導入事例</a><a href="#faq">よくあるご質問</a></div>
+      <div><h5>会社案内</h5><p class="ft__co">株式会社サンモニター<br>〒175-0045<br>東京都板橋区西台4-7-2<br>TEL 03-3931-0521<br>FAX 03-3931-0977</p></div>
+    </div>
+  </div>
+  <div class="ft__bottom">
+    <nav><a href="#footer">プライバシーポリシー</a><a href="#footer">サイトマップ</a><a href="#footer">会社概要</a><a href="#contact">お問い合わせ</a></nav>
+    <small>© SUNMONITOR CO., LTD.</small>
+    <p class="ft__note">※ 本ページはデザイン案C（アイソメトリック案）です。実際に動くHTMLとして制作しています（制作：株式会社ITLINE／提案：株式会社インフォネット）。<br>※ メインビジュアルと「課題・用途から探す」「サンプルテスト」のイラストは、本提案用に作成したイメージです。製品写真・現場写真は現行サイト掲載の画像を使用しています。導入事例・コラムの見出しはイメージです。</p>
+  </div>
+</footer>
+
+<div class="spbar"><a class="t" href="tel:0339310521"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>電話で相談</a><a class="e" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7"/></svg>見積依頼</a></div>
+
+<script>
+(function(){
+  /* メインビジュアルの動画（loadeddata/canplay で play() を再試行） */
+  var v=document.querySelector('.mv__video');
+  if(v){
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce){ v.removeAttribute('autoplay'); v.pause(); }
+    else{
+      var tryPlay=function(){ var p=v.play(); if(p&&p.catch){p.catch(function(){});} };
+      v.addEventListener('loadeddata',tryPlay); v.addEventListener('canplay',tryPlay);
+      v.addEventListener('playing',function(){ v.classList.add('on'); });
+      tryPlay(); setTimeout(tryPlay,1200);
+    }
+  }
+  /* スマホメニュー */
+  var btn=document.querySelector('.sphead button'), nav=document.querySelector('.spnav');
+  btn.addEventListener('click',function(){ var op=nav.classList.toggle('op'); btn.setAttribute('aria-expanded',op?'true':'false'); });
+  [].forEach.call(nav.querySelectorAll('a'),function(a){ a.addEventListener('click',function(){ nav.classList.remove('op'); btn.setAttribute('aria-expanded','false'); }); });
+  /* スクロール表示（IntersectionObserver＋1.2秒で強制表示のフォールバック） */
+  var rv=[].slice.call(document.querySelectorAll('.rv'));
+  function showAll(){ rv.forEach(function(el){ el.classList.add('in'); }); }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{rootMargin:'0px 0px -8% 0px'});
+    rv.forEach(function(el){ io.observe(el); });
+  }
+  setTimeout(showAll,1200);
+})();
+</script>
+</body>
+</html>

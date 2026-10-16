@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>株式会社サンモニター様 WEBサイトリニューアル 進捗ダッシュボード</title>
+<style>
+  :root{
+    --navy:#004299; --navy-d:#0b224e; --ink:#26313f; --gray:#6b7280;
+    --line:#e2e7ef; --bg:#f3f6fa; --card:#fff;
+    --green:#1d8a4e; --green-bg:#e7f5ec;
+    --orange:#e07b1f; --orange-bg:#fdf1e3;
+    --blue-bg:#e8f0fb; --red:#d64545; --red-bg:#fdecec;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Noto Sans JP","Yu Gothic Medium","Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;font-size:14px;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 20px 60px;}
+
+  header.top{background:linear-gradient(115deg,var(--navy-d) 0%,var(--navy) 62%,#1b64c4 100%);color:#fff;padding:22px 0 20px;}
+  .top .inner{max-width:1240px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  .top .ttl .en{font-size:10.5px;letter-spacing:.3em;color:#9fc0ef;font-weight:700;}
+  .top .ttl h1{font-size:21px;line-height:1.4;margin-top:2px;}
+  .top .ttl .sub{font-size:11.5px;color:#cfdff5;margin-top:2px;}
+  .countdown{display:flex;gap:12px;align-items:center;}
+  .cd-box{background:rgba(255,255,255,.13);border-radius:12px;padding:8px 20px;text-align:center;}
+  .cd-box .lbl{font-size:10.5px;color:#cfdff5;}
+  .cd-box .num{font-size:24px;font-weight:700;line-height:1.2;}
+  .cd-box .num small{font-size:11px;font-weight:500;}
+  .cd-box.hl{background:#fff;color:var(--navy-d);}
+  .cd-box.hl .lbl{color:var(--navy);}
+
+  .statusbar{background:#fff;border-bottom:1px solid var(--line);}
+  .statusbar .inner{max-width:1240px;margin:0 auto;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--gray);}
+  .statusbar b{color:var(--ink);}
+  .pill{display:inline-block;background:var(--green-bg);color:var(--green);font-weight:700;border-radius:999px;padding:2px 14px;font-size:12px;}
+
+  h2.sec{font-size:16.5px;color:var(--navy-d);margin:32px 0 12px;display:flex;align-items:center;gap:10px;}
+  h2.sec::before{content:"";width:5px;height:20px;background:var(--navy);border-radius:2px;display:inline-block;}
+  h2.sec .note{font-size:11.5px;color:var(--gray);font-weight:400;}
+
+  .who{display:inline-block;font-size:10.5px;font-weight:700;border-radius:6px;padding:1px 10px;white-space:nowrap;}
+  .who.us{background:var(--blue-bg);color:var(--navy);}
+  .who.you{background:var(--orange-bg);color:var(--orange);}
+  .who.both{background:#efeaf8;color:#6b4fa1;}
+
+  .gantt{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 24px 16px;box-shadow:0 3px 12px rgba(20,40,90,.06);overflow-x:auto;}
+  table.gt{width:100%;border-collapse:collapse;min-width:860px;}
+  table.gt th,table.gt td{padding:0;vertical-align:middle;}
+  table.gt thead th{font-size:11px;color:var(--gray);font-weight:700;padding:4px 0 8px;border-bottom:1.5px solid var(--line);}
+  table.gt thead th.ph{text-align:left;width:220px;}
+  table.gt thead th.who-c{width:150px;}
+  table.gt thead th.m{text-align:center;border-left:1px dashed #edf0f5;}
+  table.gt tbody td{border-bottom:1px solid #f0f3f8;height:54px;}
+  table.gt tbody tr:last-child td{border-bottom:none;}
+  td.ph .name{font-size:12.5px;font-weight:700;color:var(--navy-d);line-height:1.35;}
+  td.ph .stt{font-size:10.5px;font-weight:700;}
+  td.ph .stt.done{color:var(--green);}
+  td.ph .stt.doing{color:var(--orange);}
+  td.ph .stt.todo{color:#8a93a3;}
+  td.who-c{text-align:center;}
+  td.bars{position:relative;border-left:1px dashed #edf0f5;}
+  .gbar{position:absolute;top:50%;transform:translateY(-50%);height:18px;border-radius:9px;background:#cdd9ec;}
+  .gbar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:9px;background:var(--navy);}
+  .gbar.you-bar .fill{background:var(--orange);}
+  .gbar .plabel{position:absolute;left:100%;margin-left:8px;top:50%;transform:translateY(-50%);font-size:10.5px;font-weight:700;color:var(--gray);white-space:nowrap;}
+  .scrollhint{display:none;}
+  .gantt .legend{display:flex;gap:20px;flex-wrap:wrap;font-size:11px;color:var(--gray);margin-top:12px;align-items:center;}
+  .lg{display:inline-flex;align-items:center;gap:6px;}
+  .sw{width:26px;height:10px;border-radius:5px;display:inline-block;}
+  .today-note{color:var(--red);font-weight:700;}
+  .goal-flag{color:var(--red);font-weight:700;font-size:11px;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(20,40,90,.06);}
+  .panel .head{padding:10px 18px;font-weight:700;font-size:14px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .panel.you .head{background:var(--orange);}
+  .panel.us .head{background:var(--navy);}
+  .panel .head .cnt{background:#fff;border-radius:99px;font-size:12px;padding:0 12px;}
+  .panel.you .head .cnt{color:var(--orange);}
+  .panel.us .head .cnt{color:var(--navy);}
+  .panel ul{list-style:none;}
+  .panel li{padding:12px 18px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;}
+  .panel li:last-child{border-bottom:none;}
+  .due{min-width:84px;text-align:center;border-radius:8px;font-size:11px;font-weight:700;padding:4px 0;line-height:1.4;}
+  .due.warn{background:var(--red-bg);color:var(--red);}
+  .due.norm{background:var(--blue-bg);color:var(--navy);}
+  .due.plain{background:#eef1f6;color:#68727f;}
+  .panel .tx{min-width:0;flex:1;}
+  .panel .tx b{font-size:13px;color:var(--ink);display:block;line-height:1.45;}
+  .panel .tx span{font-size:11.5px;color:var(--gray);}
+  .panel .foot{padding:9px 18px;font-size:11px;color:var(--gray);background:#fafbfd;border-top:1px solid var(--line);}
+
+  .cal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .ev{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:flex;gap:12px;align-items:center;box-shadow:0 3px 12px rgba(20,40,90,.05);}
+  .date{min-width:60px;text-align:center;background:var(--blue-bg);border-radius:8px;padding:4px 0;line-height:1.3;}
+  .date b{color:var(--navy);font-size:15px;display:block;}
+  .date span{font-size:10px;color:var(--gray);}
+  .ev .tx{min-width:0;}
+  .ev .tx b{font-size:12.5px;display:block;line-height:1.4;}
+  .ev .tx span{font-size:11px;color:var(--gray);}
+
+  .docs{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 22px;box-shadow:0 3px 12px rgba(20,40,90,.06);}
+  .docs li{list-style:none;display:flex;gap:14px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);}
+  .docs li:last-child{border-bottom:none;}
+  .docs .tx{flex:1;min-width:0;}
+  .docs .nm{font-size:13px;font-weight:700;color:var(--navy-d);}
+  .docs .mt{font-size:11.5px;color:var(--gray);margin-top:2px;}
+  .docs .dl{white-space:nowrap;background:var(--navy);color:#fff;border-radius:999px;padding:7px 18px;font-size:11.5px;font-weight:700;text-decoration:none;}
+  .docs .dl:hover{background:#0a5bc4;}
+  .docs .dl.o{background:#fff;color:var(--navy);border:1.5px solid var(--navy);padding:5.5px 16.5px;}
+  .docs .dl.o:hover{background:var(--blue-bg);}
+  .docs .more{font-size:11.5px;color:var(--gray);padding:10px 0 12px;}
+  .docs .more a{color:var(--navy);font-weight:700;}
+  .feed{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 22px;box-shadow:0 3px 12px rgba(20,40,90,.06);}
+  .feed li{list-style:none;display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12.5px;align-items:baseline;}
+  .feed li:last-child{border-bottom:none;}
+  .feed .d{color:var(--gray);font-size:11.5px;min-width:82px;}
+  .feed .tag{font-size:10px;font-weight:700;border-radius:5px;padding:1px 8px;white-space:nowrap;}
+  .feed .tag.done{background:var(--green-bg);color:var(--green);}
+  .feed .tag.rep{background:var(--blue-bg);color:var(--navy);}
+
+  footer{margin-top:40px;border-top:1px solid var(--line);padding:16px 0 0;font-size:11px;color:#9aa3b0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+  .demo-ribbon{position:fixed;top:14px;right:-44px;transform:rotate(38deg);background:var(--red);color:#fff;font-size:11px;font-weight:700;padding:4px 54px;z-index:99;letter-spacing:.1em;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+
+  @media(max-width:760px){
+    .demo-ribbon{top:6px;right:-58px;font-size:9px;padding:2px 54px;}
+    .scrollhint{display:block;text-align:center;font-size:10.5px;font-weight:700;color:var(--gray);background:var(--blue-bg);border-radius:8px;padding:5px 0;margin:0 0 10px;}
+    .grid2,.cal{grid-template-columns:1fr;}
+    .top .ttl{min-width:0;flex:1 1 100%;}
+    .top .ttl h1{font-size:16.5px;}
+    .countdown{width:100%;}
+    .cd-box{flex:1;padding:8px 10px;}
+    .statusbar .inner>div{min-width:0;width:100%;}
+    h2.sec{flex-wrap:wrap;}
+    h2.sec .note{flex:1 1 100%;margin-left:15px;margin-top:-4px;}
+    .panel li{flex-wrap:wrap;}
+    .feed li{flex-wrap:wrap;}
+    .docs li{flex-wrap:wrap;}
+    .docs .tx{flex:1 1 100%;}
+    .feed li span:last-child{min-width:0;flex:1 1 100%;}
+    body{overflow-x:hidden;}
+  }
+</style>
+</head>
+<body>
+<div class="demo-ribbon">画面イメージ</div>
+
+<header class="top">
+  <div class="inner">
+    <div class="ttl">
+      <div class="en">PROJECT DASHBOARD</div>
+      <h1>株式会社サンモニター様　WEBサイトリニューアル</h1>
+      <div class="sub">株式会社インフォネット × 株式会社ITLINE　｜　最終更新：2027年1月14日（木） 17:30</div>
+    </div>
+    <div class="countdown">
+      <div class="cd-box"><div class="lbl">全体進捗</div><div class="num">24<small>%</small></div></div>
+      <div class="cd-box hl"><div class="lbl">2027年5月 公開まで</div><div class="num">約15<small>週</small></div></div>
+    </div>
+  </div>
+</header>
+
+
+<div class="statusbar">
+  <div class="inner">
+    <div>現在の工程：<b>工程2｜製品一覧のご記入</b>・<b>工程3｜デザイン制作</b>　／　スケジュール：<span class="pill">✔ 予定どおり</span>　／　サイト構成：<b>固定27ページ＋製品DB約85件で確定（12/17）</b></div>
+    <div>貴社へのお願い：<b style="color:var(--orange);">3件</b>（下の「ご対応をお願いしたいこと」をご覧ください）</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <h2 class="sec">全体スケジュール <span class="note">バーの色＝主担当（紺＝弊社、オレンジ＝貴社のご確認・ご記入・ご協力）／ 濃い部分＝完了した分</span></h2>
+  <div class="gantt">
+    <div class="scrollhint">← 横にスクロールすると全期間をご覧いただけます →</div>
+    <table class="gt">
+      <thead>
+        <tr>
+          <th class="ph">工程</th>
+          <th class="who-c">主担当</th>
+          <th class="m" style="width:calc((100% - 370px)/6);">12月</th><th class="m" style="width:calc((100% - 370px)/6);">1月</th><th class="m" style="width:calc((100% - 370px)/6);">2月</th><th class="m" style="width:calc((100% - 370px)/6);">3月</th><th class="m" style="width:calc((100% - 370px)/6);">4月</th><th class="m" style="width:calc((100% - 370px)/6);">5月</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ph"><div class="name">1. キックオフ・要件定義・サイトマップ確定</div><div class="stt done">✔ 完了（12/17 サイト構成確定）</div></td>
+          <td class="who-c"><span class="who us">弊社</span></td>
+          <td class="bars" colspan="6"><div class="gbar" style="left:1%;width:15%;"><div class="fill" style="width:100%;"></div></div></td>
+        </tr>
+        <tr>
+          <td class="ph"><div class="name">2. 製品一覧の抽出・貴社ご記入（レンタル可否等）</div><div class="stt doing">▶ 進行中（70%）</div></td>
+          <td class="who-c"><span class="who both">弊社＋貴社ご記入</span></td>
+          <td class="bars" colspan="6"><div class="gbar you-bar" style="left:8%;width:24%;"><div class="fill" style="width:70%;"></div><span class="plabel">70%</span></div></td>
+        </tr>
+        <tr>
+          <td class="ph"><div class="name">3. ワイヤーフレーム確定・デザイン制作</div><div class="stt doing">▶ 進行中（35%）</div></td>
+          <td class="who-c"><span class="who both">弊社＋貴社ご確認</span></td>
+          <td class="bars" colspan="6"><div class="gbar you-bar" style="left:17%;width:30%;"><div class="fill" style="width:35%;"></div><span class="plabel">35%</span></div></td>
+        </tr>
+        <tr>
+          <td class="ph"><div class="name">4. WordPress構築・製品DB・コーディング</div><div class="stt todo">これから（2月〜）</div></td>
+          <td class="who-c"><span class="who us">弊社</span></td>
+          <td class="bars" colspan="6"><div class="gbar" style="left:34%;width:32%;"><div class="fill" style="width:0%;"></div></div></td>
+        </tr>
+        <tr>
+          <td class="ph"><div class="name">5. 製品データ登録・事例再編集・301設計</div><div class="stt todo">これから（3月〜）</div></td>
+          <td class="who-c"><span class="who us">弊社</span></td>
+          <td class="bars" colspan="6"><div class="gbar" style="left:50%;width:32%;"><div class="fill" style="width:0%;"></div></div></td>
+        </tr>
+        <tr>
+          <td class="ph"><div class="name">6. 検証・ステージング確認</div><div class="stt todo">これから（4月）</div></td>
+          <td class="who-c"><span class="who both">弊社＋貴社ご確認</span></td>
+          <td class="bars" colspan="6"><div class="gbar you-bar" style="left:67%;width:16%;"><div class="fill" style="width:0%;"></div></div></td>
+        </tr>
+        <tr>
+          <td class="ph"><div class="name">7. CMS講習・更新マニュアル納品</div><div class="stt todo">これから（4月〜）</div></td>
+          <td class="who-c"><span class="who both">弊社＋貴社ご参加</span></td>
+          <td class="bars" colspan="6"><div class="gbar you-bar" style="left:75%;width:17%;"><div class="fill" style="width:0%;"></div></div></td>
+        </tr>
+        <tr>
+          <td class="ph"><div class="name">8. DNS切替・公開・公開後監視</div><div class="stt todo">これから（5月）</div></td>
+          <td class="who-c"><span class="who us">弊社</span></td>
+          <td class="bars" colspan="6"><div class="gbar" style="left:84%;width:12%;"><div class="fill" style="width:0%;"></div></div><span class="goal-flag" style="position:absolute;right:0;top:50%;transform:translateY(-50%);">▶ 5月 公開</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="legend">
+      <span class="lg"><span class="sw" style="background:var(--navy);"></span>弊社が進める工程</span>
+      <span class="lg"><span class="sw" style="background:var(--orange);"></span>貴社のご確認・ご記入・ご協力をいただく工程</span>
+      <span class="lg"><span class="sw" style="background:#cdd9ec;"></span>予定（未着手の範囲）</span>
+      <span class="lg today-note">｜ 現在：1月14日（工程2・3を進行中）</span>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:30px;">
+    <div>
+      <h2 class="sec" style="margin-top:0;">ご対応をお願いしたいこと <span class="note">担当：サンモニター様（企画制作部）</span></h2>
+      <div class="panel you">
+        <div class="head">サンモニター様にお願いしている事項 <span class="cnt">3件</span></div>
+        <ul>
+          <li><span class="due warn">1/22(金)<br>まで</span><div class="tx"><b>製品一覧（Excel）へのレンタル可否・販売可否・用途のご記入</b><span>弊社が現行サイトから抽出した約85件の一覧です。分かる範囲からのご記入で結構です</span></div><span class="who you">貴社</span></li>
+          <li><span class="due norm">1/26(火)<br>まで</span><div class="tx"><b>トップページデザイン案のご確認・ご承認</b><span>確認用URLをメールでご案内済み。このダッシュボードへのご返信でも承ります</span></div><span class="who you">貴社</span></li>
+          <li><span class="due norm">2/5(金)<br>まで</span><div class="tx"><b>Webサーバー（貴社名義）のお申し込み手続き</b><span>推奨環境（PHP 8.x／WAF／日次バックアップ／ステージング）を満たすプランをご案内済みです</span></div><span class="who you">貴社</span></li>
+        </ul>
+        <div class="foot">※ この3件のご対応をいただければ、そのほかの作業は弊社側で進みます。</div>
+      </div>
+    </div>
+    <div>
+      <h2 class="sec" style="margin-top:0;">弊社がいま進めていること <span class="note">担当：インフォネット／ITLINE</span></h2>
+      <div class="panel us">
+        <div class="head">弊社側で進行中の作業 <span class="cnt">3件</span></div>
+        <ul>
+          <li><span class="due plain">〜2/2</span><div class="tx"><b>製品一覧・製品詳細ページのデザイン制作</b><span>担当：ITLINE デザイナー</span></div><span class="who us">弊社</span></li>
+          <li><span class="due plain">〜1月末</span><div class="tx"><b>製品データベース（約85件）の項目設計・絞り込み検索の仕様確定</b><span>担当：ITLINE エンジニア</span></div><span class="who us">弊社</span></li>
+          <li><span class="due plain">〜2月中旬</span><div class="tx"><b>現行サイト（Joomla）のコンテンツ抽出・301リダイレクト対応表の作成</b><span>担当：ITLINE エンジニア（現行の保守委託先の制作会社様と調整中）</span></div><span class="who us">弊社</span></li>
+        </ul>
+        <div class="foot">※ 進み具合は上のスケジュールのバーに反映されます。ご質問はメール、またはこのダッシュボードからお寄せください。</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec">直近の予定</h2>
+  <div class="cal">
+    <div class="ev"><span class="date"><b>1/26</b><span>火</span></span><div class="tx"><b>第4回 定例ミーティング</b><span>15:00〜15:45 オンライン｜ご出席：両者</span></div></div>
+    <div class="ev"><span class="date"><b>2/2</b><span>火</span></span><div class="tx"><b>製品一覧・製品詳細デザイン案のご提示</b><span>確認用URLをメールでご案内｜担当：弊社</span></div></div>
+    <div class="ev"><span class="date"><b>2/9</b><span>火</span></span><div class="tx"><b>第5回 定例ミーティング</b><span>15:00〜15:45 オンライン｜ご出席：両者</span></div></div>
+  </div>
+
+  <h2 class="sec">これまでの記録 <span class="note">決定事項・共有の履歴</span></h2>
+  <div class="feed">
+    <ul>
+      <li><span class="d">1/14（木）</span><span class="tag rep">共有</span><span>トップページデザイン案（選定案ベース）の確認用URLをご案内しました。</span></li>
+      <li><span class="d">1/12（火）</span><span class="tag rep">共有</span><span>第3回定例の議事録を共有しました。製品一覧（Excel・約85件）をお渡しし、レンタル可否・用途のご記入をお願いしています。</span></li>
+      <li><span class="d">1/7（木）</span><span class="tag done">決定</span><span>主要5画面のワイヤーフレーム（トップ／製品一覧／製品詳細／レンタルについて／お問い合わせ）をご承認いただきました。</span></li>
+      <li><span class="d">12/22（火）</span><span class="tag rep">共有</span><span>第2回定例の議事録を共有しました。Webサーバーは貴社名義でご契約いただく方針を確認し、推奨環境をご案内しました。</span></li>
+      <li><span class="d">12/17（木）</span><span class="tag done">決定</span><span>サイト構成を「固定27ページ＋製品データベース約85件」で確定しました（/lp/ 配下は対象外）。</span></li>
+      <li><span class="d">12/3（木）</span><span class="tag rep">共有</span><span>キックオフミーティングの議事録を共有しました。定例は隔週火曜（オンライン）で進めます。</span></li>
+    </ul>
+  </div>
+
+
+  <h2 class="sec">資料のダウンロード <span class="note">確定した資料の最新版をここから取得できます</span></h2>
+  <div class="docs">
+    <ul>
+      <li>
+        <div class="tx">
+          <div class="nm">御提案書</div>
+          <div class="mt">PDF／全22ページ｜提案サマリー・与件整理・現状分析・全体戦略・想定サイトマップ・デザイン方針・デザイン案A〜D・製品データベース・CMS選定理由・SEO/AIO方針・保守運用・実施体制・スケジュール・移行計画</div>
+        </div>
+        <a class="dl" href="%E3%82%B5%E3%83%B3%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC%E6%A7%98_%E5%BE%A1%E6%8F%90%E6%A1%88%E6%9B%B8.pdf" target="_blank">PDFを開く</a>
+      </li>
+      <li>
+        <div class="tx">
+          <div class="nm">リニューアル後 想定サイトマップ（案）</div>
+          <div class="mt">HTML｜設計方針・全体構成ツリー（固定27ページ＋製品DB）・★新規ページの理由・ページ一覧表</div>
+        </div>
+        <a class="dl" href="%E3%82%B5%E3%83%B3%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC_%E3%82%B5%E3%82%A4%E3%83%88%E3%83%9E%E3%83%83%E3%83%97.html" target="_blank">HTMLを開く</a>
+      </li>
+      <li>
+        <div class="tx">
+          <div class="nm">主要ページ ワイヤーフレーム（案）</div>
+          <div class="mt">HTML｜トップ（PC／スマートフォン）・製品一覧・製品詳細・レンタルについて・お問い合わせの5画面</div>
+        </div>
+        <a class="dl" href="%E3%82%B5%E3%83%B3%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC_%E3%83%AF%E3%82%A4%E3%83%A4%E3%83%BC%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0.html" target="_blank">HTMLを開く</a>
+      </li>
+      <li>
+        <div class="tx">
+          <div class="nm">デザイン案A｜実機写真のカタログ型</div>
+          <div class="mt">動くHTML（PC／スマートフォン対応）｜通常のデザイン案・実機写真のスライダー</div>
+        </div>
+        <a class="dl" href="%E3%82%B5%E3%83%B3%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC_%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E6%A1%88A.html" target="_blank">HTMLを開く</a>
+      </li>
+      <li>
+        <div class="tx">
+          <div class="nm">デザイン案B｜シンプル・製品主役</div>
+          <div class="mt">動くHTML（PC／スマートフォン対応）｜通常のデザイン案・左固定ナビ・製品絞り込み</div>
+        </div>
+        <a class="dl" href="%E3%82%B5%E3%83%B3%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC_%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E6%A1%88B.html" target="_blank">HTMLを開く</a>
+      </li>
+      <li>
+        <div class="tx">
+          <div class="nm">デザイン案C｜アイソメトリック</div>
+          <div class="mt">動くHTML（PC／スマートフォン対応）｜イラスト案・街を描いたアイソメトリック（動画）</div>
+        </div>
+        <a class="dl" href="%E3%82%B5%E3%83%B3%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC_%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E6%A1%88C.html" target="_blank">HTMLを開く</a>
+      </li>
+      <li>
+        <div class="tx">
+          <div class="nm">デザイン案D｜立体イラスト</div>
+          <div class="mt">動くHTML（PC／スマートフォン対応）｜イラスト案・立体イラストのタイルが流れる左右分割</div>
+        </div>
+        <a class="dl" href="%E3%82%B5%E3%83%B3%E3%83%A2%E3%83%8B%E3%82%BF%E3%83%BC_%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E6%A1%88D.html" target="_blank">HTMLを開く</a>
+      </li>
+      <li>
+        <div class="tx">
+          <div class="nm">運用サポート体制のご説明</div>
+          <div class="mt">PDF｜窓口のご案内・運用範囲と保守範囲・定期アップデート保守（月2回）・更新代行・実施体制</div>
+        </div>
+        <a class="dl o" href="index.html" target="_blank">ご提案一覧へ</a>
+      </li>
+      <li>
+        <div class="tx">
+          <div class="nm">プロジェクトの進め方</div>
+          <div class="mt">PDF｜全体スケジュール・工程別の進捗表・進捗ダッシュボードの使い方・移行計画</div>
+        </div>
+        <a class="dl o" href="index.html" target="_blank">ご提案一覧へ</a>
+      </li>
+      <li>
+        <div class="tx">
+          <div class="nm">ご連絡方法と更新代行のご案内</div>
+          <div class="mt">PDF｜ご連絡手段の一覧・更新依頼ダッシュボードの操作・更新代行のご依頼フロー・製品情報とお知らせの掲載手順</div>
+        </div>
+        <a class="dl o" href="index.html" target="_blank">ご提案一覧へ</a>
+      </li>
+    </ul>
+    <div class="more">※ 御提案書・別紙・デザイン案などの資料一式は <a href="index.html" target="_blank">ご提案一覧ページ</a> からもご覧いただけます。</div>
+  </div>
+
+  <footer>
+    <span>本画面は開発イメージです（データはサンプル）。実際のダッシュボードは専用URL＋パスワードでご提供し、スマートフォンからもご覧いただけます。</span>
+    <span>© infoNet inc. All Rights Reserved.　CONFIDENTIAL</span>
+  </footer>
+</div>
+</body>
+</html>
